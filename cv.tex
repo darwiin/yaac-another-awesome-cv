@@ -1,0 +1,84 @@
+\documentclass[a4paper,10pt]{article}
+
+%A Few Useful Packages
+\usepackage[frenchb]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{marvosym}
+\usepackage{fontspec} 					          %for loading fonts
+\usepackage{xunicode,xltxtra,url,parskip} 	    %other packages for formatting
+\RequirePackage{color,graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+%\usepackage[big]{layaureo} 				%better formatting of the A4 page
+% an alternative to Layaureo can be ** \usepackage{fullpage} **
+\usepackage{fullpage}
+\usepackage{longtable} 				%for Grades
+\usepackage{titlesec}					%custom \section
+\usepackage[margin=1.5cm]{geometry}
+
+%Setup hyperref package, and colours for links
+\usepackage{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour, linkcolor=linkcolour}
+
+%FONTS
+\defaultfontfeatures{Mapping=tex-text}
+\setmainfont[SmallCapsFont = Fontin Sans Small Caps]{Fontin Sans}
+%\setmainfont[SmallCapsFont = Calibri]{Calibri}
+
+%CV Sections inspired by: 
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{3pt}{3pt}
+%Tweak a bit the top margin
+%\addtolength{\voffset}{-1.3cm}
+
+\newlength{\datebox}
+\settowidth{\datebox}{Décembre 2009}
+
+%Italian hyphenation for the word: ''corporations''
+\hyphenation{im-pre-se}
+
+%-------------WATERMARK TEST [**not part of a CV**]---------------
+\usepackage[absolute]{textpos}
+
+\setlength{\TPHorizModule}{30mm}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{2mm}{0.65\paperheight}
+\setlength{\parindent}{0pt}
+
+\usepackage{array}
+\newcolumntype{R}[1]{>{\hfill}m{#1}}
+
+%--------------------BEGIN DOCUMENT----------------------
+\begin{document}
+
+\pagestyle{empty} % non-numbered pages
+
+\font\fb=''[cmr10]'' %for use with \LaTeX command
+
+%--------------------TITLE-------------
+%\par{
+%		\color{Blue}{\LARGE Christophe \textsc{Roger}\color{Black} (29 ans)
+%	}\bigskip\par}
+	
+\input{perso}
+
+\par{
+		\bigskip\center{\LARGE Architecte logiciel | Développeur/Concepteur JEE}\par
+	}
+\bigskip
+
+
+%--------------------SECTIONS-----------------------------------
+\input{headline}
+%\input{perso_section}
+\input{competences}
+\input{experience_compact}
+\input{langues}
+\input{scolarite}
+%\input{interets}
+\input{references}
+
+ 
+\end{document}
