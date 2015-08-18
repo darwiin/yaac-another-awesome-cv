@@ -30,7 +30,7 @@
 *.vrb
 *.xdy
 *.tdo
-cv.pdf
+*.pdf
 perso.tex
 perso_section.tex
 references.tex
