@@ -13,5 +13,9 @@ In my version, Personal data have moved on top of the page just before the profe
 I have also created little macros have been created to make easier and cleaner Latex source code
 ```TeX
 \user{firstname}{LASTNAME}
-\linkedin{\faLinkedin \quad \href{link}{Link Description}}
+\linkedin{{link}{Link Description}}
+\address{12, Dummy Road, 000000, Dummy Country}
+\infos{Dummy infos (birthday, etc...)}
+\smartphone{+687 000 000}
+\email{mail@dummy-mail.com}
 ```
