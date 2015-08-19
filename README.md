@@ -10,7 +10,8 @@ More informations can be found here
 In my version, Personal data have moved on top of the page just before the professional title.
 
 
-I have also created little macros have been created to make easier and cleaner Latex source code
+I have also created little Latex macros to make easier and cleaner Latex source code
+
 ```TeX
 \user{firstname}{LASTNAME}
 \linkedin{{link}{Link Description}}
@@ -18,4 +19,16 @@ I have also created little macros have been created to make easier and cleaner L
 \infos{Dummy infos (birthday, etc...)}
 \smartphone{+687 000 000}
 \email{mail@dummy-mail.com}
+```
+
+Another macro has been set to perform conditional include. You have to put \demotrue or \demofalse once in your file to use \conditionalinput macro
+
+```TeX
+%These two lines will include section_references_demo
+\demotrue
+\conditionalinput{section_references_demo}{references}
+
+%These two lines will include references
+\demotrue
+\conditionalinput{section_references_demo}{references}
 ```
