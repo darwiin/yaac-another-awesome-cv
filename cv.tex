@@ -9,10 +9,8 @@
 \usepackage{marvosym}
 \usepackage{fontspec} 					          %for loading fonts
 \usepackage{xunicode,xltxtra,url,parskip} 	    %other packages for formatting
-\RequirePackage{color,graphicx}
+%\RequirePackage{color,graphicx}
 \usepackage[usenames,dvipsnames]{xcolor}
-%\usepackage[big]{layaureo} 				%better formatting of the A4 page
-% an alternative to Layaureo can be ** \usepackage{fullpage} **
 \usepackage{fullpage}
 \usepackage{longtable} 				%for Grades
 \usepackage{titlesec}					%custom \section
@@ -24,6 +22,7 @@
 \definecolor{linkcolour}{rgb}{0,0.2,0.6}
 \hypersetup{colorlinks,breaklinks,urlcolor=linkcolour, linkcolor=linkcolour}
 
+% Include custom package
 \usepackage{ResumeMacros}
 \usepackage{DemoMode}
 
@@ -74,15 +73,11 @@
 
 %--------------------SECTIONS-----------------------------------
 \input{headline}
-\input{competences}								% Section compétence
-\input{experience_compact}						% Section expérience
-\input{langues}									% Section langues
+\input{competences}										% Section compétence
+\input{experience_compact}								% Section expérience
+\input{langues}											% Section langues
 \input{scolarite}
 %\input{interets}
+\conditionalinput{references_demo}{references} 			% Section références
 
-
-\conditionalinput{references_demo}{references} 	% Section références
-
-
- 
 \end{document}
