@@ -1,14 +1,17 @@
 latex-classicalcv
 =================
 
-Latex CV based on Alessandro PLASMATI graduate CV. More informations can be found here
+Latex CV based on CV template created by Alessandro Plasmati. The original templates utilizes XeLaTeX engine and Fontin font. 
+More informations can be found here
 - http://fr.scribd.com/doc/16335667/Writing-your-Professional-CV-with-LaTeX
 - http://www.latextemplates.com/template/plasmati-graduate-cv
+- https://www.sharelatex.com/templates/cv-or-resume/professional-cv
 
-This resume use 
+In my version, Personal data have moved on top of the page just before the professional title.
 
 
-Macros have been created to make easier and cleaner Latex source code
+I have also created little macros have been created to make easier and cleaner Latex source code
 ```TeX
 \user{firstname}{LASTNAME}
+\linkedin{\faLinkedin \quad \href{link}{Link Description}}
 ```
