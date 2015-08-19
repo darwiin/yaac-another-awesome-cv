@@ -25,6 +25,7 @@
 \hypersetup{colorlinks,breaklinks,urlcolor=linkcolour, linkcolor=linkcolour}
 
 \usepackage{ResumeMacros}
+\usepackage{DemoMode}
 
 %FONTS
 \defaultfontfeatures{Mapping=tex-text}
@@ -58,14 +59,12 @@
 %--------------------BEGIN DOCUMENT----------------------
 \begin{document}
 
-\pagestyle{empty} % non-numbered pages
+\pagestyle{empty} 			% non-numbered pages
+\font\fb=''[cmr10]'' 		% for use with \LaTeX command
+\demofalse					% Set Demo mode to true
 
-\font\fb=''[cmr10]'' %for use with \LaTeX command
 
-
-
-\input{perso}
-
+\conditionalinput{section_perso_demo}{section_perso}	% Personal data section
 %--------------------TITLE-------------	
 \par{
 		\bigskip\center{\Large Architecte logiciel | Développeur/Concepteur JEE}\par
@@ -75,13 +74,15 @@
 
 %--------------------SECTIONS-----------------------------------
 \input{headline}
-%\input{perso_section}
-\input{competences}
-\input{experience_compact}
-\input{langues}
+\input{competences}								% Section compétence
+\input{experience_compact}						% Section expérience
+\input{langues}									% Section langues
 \input{scolarite}
 %\input{interets}
-\input{references}
+
+
+\conditionalinput{references_demo}{references} 	% Section références
+
 
  
 \end{document}
