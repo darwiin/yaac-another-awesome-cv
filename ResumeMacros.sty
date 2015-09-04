@@ -2,6 +2,25 @@
 
 \RequirePackage{fontawesome}
 
+%Config
+%Setup hyperref package, and colours for links
+\RequirePackage{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour, linkcolor=linkcolour}
+
+%FONTS
+\defaultfontfeatures{Mapping=tex-text}
+\setmainfont[BoldFont = Helvetica Neue, ItalicFont=Helvetica Neue Thin Italic ,SmallCapsFont = Helvetica Neue Light]{Helvetica Neue Thin}
+
+%CV Sections 
+\titleformat{\section}{\Large\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{2pt}{2pt}
+
+%New length definition
+\newlength{\datebox}
+\settowidth{\datebox}{Décembre 2009}
+
+% Macros
 \newcommand{\el}{\quad - \enspace}
 \newcommand\user[2]{\color{Blue}{\LARGE #1 #2}\color{Black}}
 \newcommand\linkedin[2]{\faLinkedin \quad \href{#1}{#2}}
@@ -9,3 +28,13 @@
 \newcommand\infos[1]{\faInfo \quad #1}
 \newcommand\smartphone[1]{\faMobilePhone \quad #1}
 \newcommand\email[2]{\faEnvelope \quad \href{mailto:#1}{#2}}
+
+\newcommand\resumetitle[1]{
+	\par{
+		\bigskip\center{\Large #1}\par
+	}
+	\bigskip
+}
+%Resume part title definition
+\newcommand\sectiontitle[2]{\section{\texorpdfstring{\color{Blue}#2\enspace #1}{#1}}}
+

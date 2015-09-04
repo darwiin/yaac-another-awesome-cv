@@ -7,39 +7,19 @@
 \usepackage[latin1]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{marvosym}
-\usepackage{fontspec} 					          %for loading fonts
-\usepackage{xunicode,xltxtra,url,parskip} 	    %other packages for formatting
+\usepackage{fontspec} 					        % for loading fonts
+\usepackage{xunicode,xltxtra,url,parskip} 	    % other packages for formatting
 %\RequirePackage{color,graphicx}
 \usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{fullpage}
-\usepackage{longtable} 				%for Grades
-\usepackage{titlesec}					%custom \section
+\usepackage{longtable} 							% for Grades
+\usepackage{titlesec}							% custom \section
 \usepackage[margin=1.5cm]{geometry}
 
-
-%Setup hyperref package, and colours for links
-\usepackage{hyperref}
-\definecolor{linkcolour}{rgb}{0,0.2,0.6}
-\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour, linkcolor=linkcolour}
 
 % Include custom package
 \usepackage{ResumeMacros}
 \usepackage{DemoMode}
-
-%FONTS
-\defaultfontfeatures{Mapping=tex-text}
-%\setmainfont[SmallCapsFont = Fontin Sans Small Caps]{Fontin Sans Regular}
-\setmainfont[BoldFont = Helvetica Neue, ItalicFont=Helvetica Neue Thin Italic ,SmallCapsFont = Helvetica Neue Light]{Helvetica Neue Thin}
-
-%CV Sections inspired by: 
-\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
-\titlespacing{\section}{0pt}{2pt}{2pt}
-%Tweak a bit the top margin
-%\addtolength{\voffset}{-1.3cm}
-
-
-\newlength{\datebox}
-\settowidth{\datebox}{Décembre 2009}
 
 %Italian hyphenation for the word: ''corporations''
 \hyphenation{im-pre-se}
@@ -58,26 +38,22 @@
 %--------------------BEGIN DOCUMENT----------------------
 \begin{document}
 
-\pagestyle{empty} 			% non-numbered pages
-\font\fb=''[cmr10]'' 		% for use with \LaTeX command
-\demotrue					% Set Demo mode to true
+\demotrue														% Set Demo mode to true
 
+\pagestyle{empty} 												% non-numbered pages
+\font\fb=''[cmr10]'' 											% for use with \LaTeX command
 
-\conditionalinput{section_perso_demo}{section_perso}	% Personal data section
-%--------------------TITLE-------------	
-\par{
-		\bigskip\center{\Large Architecte logiciel | Développeur/Concepteur JEE}\par
-	}
-\bigskip
+\conditionalinput{section_perso_demo}{section_perso}			% Personal data section
 
+\resumetitle{Architecte logiciel | Développeur/Concepteur JEE}
 
 %--------------------SECTIONS-----------------------------------
 \input{headline}
-\input{competences}										% Section compétence
-\input{experience_compact}								% Section expérience
-\input{langues}											% Section langues
-\input{scolarite}
-%\input{interets}
+\input{competences}												% Section compétence
+\input{experience_compact}										% Section expérience
+\input{langues}													% Section langues
+\input{scolarite}												% Section scholarité
+%\input{interets}												% Section intérêts
 \conditionalinput{section_references_demo}{references} 			% Section références
 
 \end{document}
