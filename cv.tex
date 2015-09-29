@@ -4,16 +4,13 @@
 
 %A Few Useful Packages
 \usepackage[frenchb]{babel}
-\usepackage[latin1]{inputenc}
+%\usepackage[latin1]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{marvosym}
 \usepackage{fontspec} 					        % for loading fonts
 \usepackage{xunicode,xltxtra,url,parskip} 	    % other packages for formatting
 %\RequirePackage{color,graphicx}
 \usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{fullpage}
-\usepackage{longtable} 							% for Grades
-\usepackage{titlesec}							% custom \section
 \usepackage[margin=1.5cm]{geometry}
 
 
@@ -24,21 +21,11 @@
 %Italian hyphenation for the word: ''corporations''
 \hyphenation{im-pre-se}
 
-%-------------WATERMARK TEST [**not part of a CV**]---------------
-\usepackage[absolute]{textpos}
-
-\setlength{\TPHorizModule}{30mm}
-\setlength{\TPVertModule}{\TPHorizModule}
-\textblockorigin{2mm}{0.65\paperheight}
-\setlength{\parindent}{0pt}
-
-\usepackage{array}
-\newcolumntype{R}[1]{>{\hfill}m{#1}}
-
 %--------------------BEGIN DOCUMENT----------------------
 \begin{document}
 
-\demotrue														% Set Demo mode to true
+\setlist[itemize,1]{label=\faAngleRight, nosep}
+\demofalse														% Set Demo mode to true
 
 \pagestyle{empty} 												% non-numbered pages
 \font\fb=''[cmr10]'' 											% for use with \LaTeX command
