@@ -1,12 +1,21 @@
 \ProvidesPackage{ResumeMacros}[2015/08/19 v0.8 ResumeMacros]
 
 % Dependences
+%A Few Useful Packages
+\RequirePackage[frenchb]{babel}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{fontspec} 					        % for loading fonts
+\RequirePackage{xunicode,xltxtra,url,parskip} 	    % other packages for formatting
+\RequirePackage[usenames,dvipsnames]{xcolor}
+\RequirePackage{fullpage}
+\RequirePackage[margin=1.5cm]{geometry}
 \RequirePackage{fontawesome}
 \RequirePackage{hyperref}
 \RequirePackage{titlesec}
 \RequirePackage{array}
 \RequirePackage{enumitem}
 \RequirePackage{longtable} 	
+
 
 
 
@@ -58,7 +67,7 @@
 	\bigskip
 }
 %Resume part title definition
-\newcommand\sectiontitle[2]{\section{\texorpdfstring{\color{Blue}#2\enspace #1}{#1}}}
+\newcommand\sectionTitle[2]{\section{\texorpdfstring{\color{Blue}#2\enspace #1}{#1}}}
 
 \newenvironment{experiences}{%
   \begin{longtable}{R{\leftcolumn}|p{\rightcolumnlength}}
