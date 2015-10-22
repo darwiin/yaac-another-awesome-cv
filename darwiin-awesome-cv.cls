@@ -1,4 +1,4 @@
-\ProvidesClass{roger-cv}[2015/10/04 v1.0 Christophe ROGER CV Class]
+\ProvidesClass{darwiin-awesome-cv}[2015/10/04 v1.0 Christophe ROGER CV Class]
 
 \LoadClass[11pt,a4paper]{article}
 
@@ -68,6 +68,10 @@
 	}
 	\bigskip
 }
+
+
+
+
 %Resume part title definition
 \newcommand\sectionTitle[2]{\section{\texorpdfstring{\color{Blue}#2\enspace #1}{#1}}}
 
