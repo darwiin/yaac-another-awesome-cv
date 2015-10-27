@@ -31,10 +31,6 @@
 *.xdy
 *.tdo
 *.pdf
-perso.tex
-perso_section.tex
-section_perso.tex
-references.tex
 cv.texnicle
 cv.texnicle.backup
 .DS_Store
