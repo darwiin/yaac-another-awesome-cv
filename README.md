@@ -2,10 +2,11 @@ latex-classicalcv
 =================
 
 Latex CV based on CV template created by Alessandro Plasmati. The original templates utilizes XeLaTeX engine and Fontin font. 
-More informations can be found here
-   - http://fr.scribd.com/doc/16335667/Writing-your-Professional-CV-with-LaTeX
-   - http://www.latextemplates.com/template/plasmati-graduate-cv
-   - https://www.sharelatex.com/templates/cv-or-resume/professional-cv
+More informations can be found here :
+
+   -  [ Scribd ](http://fr.scribd.com/doc/16335667/Writing-your-Professional-CV-with-LaTeX)
+   -  [ LaTeX Templates ](http://www.latextemplates.com/template/plasmati-graduate-cv)
+   -  [ ShareLatex ](https://www.sharelatex.com/templates/cv-or-resume/professional-cv)
 
 In my version, Personal data have moved on top of the page just before the professional title.
 
