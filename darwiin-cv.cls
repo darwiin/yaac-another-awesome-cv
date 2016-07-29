@@ -52,13 +52,13 @@
 \setlength{\leftcolumn}{2.5cm}
 
 % Macros
-\newcommand{\el}{\quad \faAngleRight \enspace}					% Custom itemize to use with array
-\newcommand\user[2]{\color{Blue}{\LARGE #1 #2}\color{Black}}	% Username
-\newcommand\linkedin[2]{\faLinkedin \quad \href{#1}{#2}}		% Linkedin icon + URL
-\newcommand\address[1]{\faHome \quad #1}						% Home icon + address as parameter
-\newcommand\infos[1]{\faInfo \quad #1}
-\newcommand\smartphone[1]{\faMobilePhone \quad #1}
-\newcommand\email[2]{\faEnvelope \quad \href{mailto:#1}{#2}}
+\newcommand{\el}{\quad \faAngleRight \enspace}					       % Custom itemize to use with array
+\newcommand\user[2]{\color{Blue}{\LARGE #1 #2}\color{Black}}	 % Username
+\newcommand\linkedin[2]{\faLinkedin \quad \href{#1}{#2}}		   % Linkedin icon + URL
+\newcommand\address[1]{\faHome \quad #1}						           % Home icon + address as parameter
+\newcommand\infos[1]{\faInfo \quad #1}                         % I icon
+\newcommand\smartphone[1]{\faMobilePhone \quad #1}             % Smartphone Icon
+\newcommand\email[2]{\faEnvelope \quad \href{mailto:#1}{#2}}   % Envelope Icon + mailto link
 \newcommand\link[2]{\href{#1}{#2} \faLink }
 \newcommand\important[1]{\textbf #1}
 
