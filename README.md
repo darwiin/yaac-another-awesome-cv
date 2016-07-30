@@ -21,6 +21,36 @@ I have also created little Latex macros to make easier and cleaner Latex source 
 \smartphone{+687 000 000}
 \email{mail@dummy-mail.com}
 ```
+
+```latex
+  \experience
+    {End date}      {Experience title}{Enterprise}{Country}
+    {Begin date}    {
+    				  experience details
+                      \begin{itemize}
+                        \item Item 1: _Item 1 description_
+                        \item Item 2: _Item 2 description_
+                        \item Item 3: _Item 3 description_
+                      \end{itemize}
+                    }
+                    {Technology highlights}
+```
+
+```latex
+ \consultantexperience
+  {End date}        {Experience title}{Enterprise}{Country}
+  {Begin date}      {Client job title}{Clent enterprise}
+                    {
+                      experience details
+                      \begin{itemize}
+                        \item Item 1: _Item 1 description_
+                        \item Item 2: _Item 2 description_
+                        \item Item 3: _Item 3 description_
+                      \end{itemize}
+                    }
+                    {Technology highlights}
+```
+
 Another macro has been set to perform conditional include. You have to put \demotrue or \demofalse once in your file to use \conditionalinput macro
 
 ```latex
