@@ -23,6 +23,10 @@ I have also created little Latex macros to make easier and cleaner Latex source 
 ```
 
 ```latex
+% Begin a new experiences environment to use experience and consultantexperience macro
+\begin{experiences}
+
+% The experience macro work as below and can be used to describe a job experience
   \experience
     {End date}      {Experience title}{Enterprise}{Country}
     {Begin date}    {
@@ -34,12 +38,14 @@ I have also created little Latex macros to make easier and cleaner Latex source 
                       \end{itemize}
                     }
                     {Technology highlights}
-```
 
-```latex
- \consultantexperience
-  {End date}        {Experience title}{Enterprise}{Country}
-  {Begin date}      {Client job title}{Clent enterprise}
+% The emptyseparator macro is used to create white space in your experience
+  \emptySeparator
+
+% The consultantexperience macro is very similar to the experience macro, but offer you the possibility tu put client details
+  \consultantexperience
+    {End date}        {Experience title}{Enterprise}{Country}
+    {Begin date}      {Client job title}{Clent enterprise}
                     {
                       experience details
                       \begin{itemize}
@@ -49,6 +55,7 @@ I have also created little Latex macros to make easier and cleaner Latex source 
                       \end{itemize}
                     }
                     {Technology highlights}
+\end{experiences}
 ```
 
 Another macro has been set to perform conditional include. You have to put \demotrue or \demofalse once in your file to use \conditionalinput macro
