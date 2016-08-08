@@ -55,6 +55,8 @@
 \newcommand{\el}{\quad \faAngleRight \enspace}					       % Custom itemize to use with array
 \newcommand\user[2]{\color{Blue}{\LARGE #1 #2}\color{Black}}	 % Username
 \newcommand\linkedin[2]{\faLinkedin \quad \href{#1}{#2}}		   % Linkedin icon + URL
+\newcommand\viadeo[2]{\faViadeo \quad \href{#1}{#2}}           % Viadeo icon + URL
+\newcommand\github[2]{\faGithub \quad \href{#1}{#2}}           % Github icon + URL
 \newcommand\address[1]{\faHome \quad #1}						           % Home icon + address as parameter
 \newcommand\infos[1]{\faInfo \quad #1}                         % I icon
 \newcommand\smartphone[1]{\faMobilePhone \quad #1}             % Smartphone Icon

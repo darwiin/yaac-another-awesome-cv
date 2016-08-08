@@ -8,10 +8,10 @@ More informations can be found here :
    -  [ LaTeX Templates ](http://www.latextemplates.com/template/plasmati-graduate-cv)
    -  [ ShareLatex ](https://www.sharelatex.com/templates/cv-or-resume/professional-cv)
 
-In my version, Personal data have moved on top of the page just before the professional title. I've also replaced default font by _Helvetica Neue_ 
+I choose to move _Personal data_ have on top of the page just before the professional title. I've also replaced default font by _Helvetica Neue_ 
 and included _Font Awesome_ items.
 
-I have also created little Latex macros to make easier and cleaner Latex source code
+I've chosen to cut my resume in a couple of smaller files and to add some macro to make the main latex source code more readable. 
 
 ```latex
 \user{firstname}{LASTNAME}

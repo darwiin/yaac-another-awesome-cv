@@ -2,21 +2,18 @@
 
 \documentclass{darwiin-cv}
 
-\usepackage{DemoMode}
-
 %Italian hyphenation for the word: ''corporations''
 \hyphenation{im-pre-se}
 
-%--------------------BEGIN DOCUMENT----------------------
+%------------------------------------------
 \begin{document}
 
-\setlist[itemize,1]{label=\faAngleRight, nosep, leftmargin=2em}
-\demofalse														% Set Demo mode to true
+\setlist[itemize,1]{label=\faAngleRight, nosep, leftmargin=2em}	
 
 \pagestyle{empty} 												% non-numbered pages
 \font\fb=''[cmr10]'' 											% for use with \LaTeX command
 
-\conditionalinput{section_perso_demo}{section_perso}			% Personal data section
+\input{section_perso}											% Personal data section
 
 \resumetitle{Architecte logiciel | Développeur/Concepteur JEE}
 
@@ -27,6 +24,6 @@
 \input{langues}													% Section langues
 \input{scolarite}												% Section scholarité
 %\input{interets}												% Section intérêts
-\conditionalinput{section_references_demo}{references} 			% Section références
+\input{references} 												% Section références
 
 \end{document}
