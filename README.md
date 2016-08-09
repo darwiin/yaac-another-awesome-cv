@@ -22,6 +22,8 @@ I've chosen to cut my resume in a couple of smaller files and to add some macro 
 \email{mail@dummy-mail.com}
 ```
 
+The experices section has to follow this template: 
+
 ```latex
 % Begin a new experiences environment to use experience and consultantexperience macro
 \begin{experiences}
@@ -42,7 +44,8 @@ I've chosen to cut my resume in a couple of smaller files and to add some macro 
 % The emptyseparator macro is used to create white space in your experience
   \emptySeparator
 
-% The consultantexperience macro is very similar to the experience macro, but offer you the possibility tu put client details
+% The consultantexperience macro is very similar to the experience macro, but offer you 
+% the possibility tu put client details
   \consultantexperience
     {End date}        {Experience title}{Enterprise}{Country}
     {Begin date}      {Client job title}{Clent enterprise}
@@ -59,13 +62,3 @@ I've chosen to cut my resume in a couple of smaller files and to add some macro 
 ```
 
 Another macro has been set to perform conditional include. You have to put \demotrue or \demofalse once in your file to use \conditionalinput macro
-
-```latex
-%These two lines will include section_references_demo
-\demotrue
-\conditionalinput{section_references_demo}{references}
-
-%These two lines will include references
-\demotrue
-\conditionalinput{section_references_demo}{references}
-```
