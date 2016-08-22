@@ -52,15 +52,15 @@
 \setlength{\leftcolumn}{2.5cm}
 
 % Macros
-\newcommand{\el}{\quad \faAngleRight \enspace}					       % Custom itemize to use with array
-\newcommand\user[2]{\color{Blue}{\LARGE #1 #2}\color{Black}}	 % Username
-\newcommand\linkedin[2]{\faLinkedin \quad \href{#1}{#2}}		   % Linkedin icon + URL
-\newcommand\viadeo[2]{\faViadeo \quad \href{#1}{#2}}           % Viadeo icon + URL
-\newcommand\github[2]{\faGithub \quad \href{#1}{#2}}           % Github icon + URL
-\newcommand\address[1]{\faHome \quad #1}						           % Home icon + address as parameter
-\newcommand\infos[1]{\faInfo \quad #1}                         % I icon
-\newcommand\smartphone[1]{\faMobilePhone \quad #1}             % Smartphone Icon
-\newcommand\email[2]{\faEnvelope \quad \href{mailto:#1}{#2}}   % Envelope Icon + mailto link
+\newcommand{\el}{\enspace \faAngleRight \enspace}					        % Custom itemize to use with array
+\newcommand\user[2]{\color{Blue}{\LARGE #1 #2}\color{Black}}	    % Username
+\newcommand\linkedin[2]{\faLinkedin \enspace \href{#1}{#2}}		    % Linkedin icon + URL
+\newcommand\viadeo[2]{\faViadeo \enspace \href{#1}{#2}}           % Viadeo icon + URL
+\newcommand\github[2]{\faGithub \enspace \href{#1}{#2}}           % Github icon + URL
+\newcommand\address[1]{\faMapMarker \enspace #1}						      % Home icon + address as parameter
+\newcommand\infos[1]{\faInfo \enspace #1}                         % I icon
+\newcommand\smartphone[1]{\faMobilePhone \enspace #1}             % Smartphone Icon
+\newcommand\email[2]{\faAt \enspace \href{mailto:#1}{#2}}   % Envelope Icon + mailto link
 \newcommand\link[2]{\href{#1}{#2} \faLink }
 \newcommand\important[1]{\textbf #1}
 
@@ -86,7 +86,7 @@
 \newcommand\experience[7]{
   \textsc{#1}    & \textsc{#2, #3, #4}   								\\
   \textsc{#5}    & \begin{minipage}[t]{\rightcolumnlength}
-  					#6
+  					         #6
                    \end{minipage}										\\
                  & \footnotesize{\emph{Technologies utilisées:} #7 } 	\\
   }
@@ -94,8 +94,8 @@
 \newcommand\consultantexperience[9]{
   \textsc{#1}    & \textsc{#2, #3, #4}   								\\
   \textsc{#5}    & \emph{#6} pour #7                       				\\
-  				 & 	\begin{minipage}[t]{\rightcolumnlength}
-  						#8
+  				       & 	\begin{minipage}[t]{\rightcolumnlength}
+  						        #8
                    	\end{minipage}										\\
                  & \footnotesize{\emph{Technologies utilisées:} #9 } 	\\
   }
