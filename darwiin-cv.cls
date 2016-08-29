@@ -1,0 +1,103 @@
+\ProvidesClass{darwiin-cv}[2015/10/04 v1.0 Christophe ROGER CV Class]
+
+\LoadClass[11pt,a4paper]{article}
+
+% Dependences
+%A Few Useful Packages
+\RequirePackage[frenchb]{babel}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{fontspec} 					        % for loading fonts
+\RequirePackage{xunicode,xltxtra,url,parskip} 	    % other packages for formatting
+\RequirePackage[usenames,dvipsnames]{xcolor}
+\RequirePackage{fullpage}
+\RequirePackage[margin=1.5cm]{geometry}
+\RequirePackage{fontawesome}
+\RequirePackage{hyperref}
+\RequirePackage{titlesec}
+\RequirePackage{array}
+\RequirePackage{enumitem}
+\RequirePackage{longtable} 	
+
+
+
+
+% Setup hyperref package, and colours for links
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour, linkcolor=linkcolour}
+
+% Setup CV sections
+\titleformat{\section}{\Large\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{2pt}{2pt}
+
+% Setup Array : new column type
+\newcolumntype{R}[1]{>{\hfill}m{#1}}
+
+
+%Italian hyphenation for the word: ''corporations''
+\hyphenation{im-pre-se}
+
+% Setup fonts
+\defaultfontfeatures{Mapping=tex-text}
+\setmainfont[BoldFont = Helvetica Neue, ItalicFont=Helvetica Neue Thin Italic ,SmallCapsFont = Helvetica Neue Light]{Helvetica Neue Thin}
+
+
+%New length definition
+\newlength{\datebox}
+\settowidth{\datebox}{Décembre 2009}
+
+\newlength{\rightcolumnlength}
+\setlength{\rightcolumnlength}{14.8cm}
+
+\newlength{\leftcolumn}
+\setlength{\leftcolumn}{2.5cm}
+
+% Macros
+\newcommand{\el}{\enspace \faAngleRight \enspace}					        % Custom itemize to use with array
+\newcommand\user[2]{\color{Blue}{\LARGE #1 #2}\color{Black}}	    % Username
+\newcommand\linkedin[2]{\faLinkedin \enspace \href{#1}{#2}}		    % Linkedin icon + URL
+\newcommand\viadeo[2]{\faViadeo \enspace \href{#1}{#2}}           % Viadeo icon + URL
+\newcommand\github[2]{\faGithub \enspace \href{#1}{#2}}           % Github icon + URL
+\newcommand\address[1]{\faMapMarker \enspace #1}						      % Home icon + address as parameter
+\newcommand\infos[1]{\faInfo \enspace #1}                         % I icon
+\newcommand\smartphone[1]{\faMobilePhone \enspace #1}             % Smartphone Icon
+\newcommand\email[2]{\faAt \enspace \href{mailto:#1}{#2}}   % Envelope Icon + mailto link
+\newcommand\link[2]{\href{#1}{#2} \faLink }
+\newcommand\important[1]{\textbf #1}
+
+\newcommand\resumetitle[1]{
+	\par{
+		\bigskip\center{\Large #1}\par
+	}
+	\bigskip
+}
+
+
+
+
+%Resume part title definition
+\newcommand\sectionTitle[2]{\section{\texorpdfstring{\color{Blue}#2\enspace #1}{#1}}}
+
+\newenvironment{experiences}{%
+  \begin{longtable}{R{\leftcolumn}|p{\rightcolumnlength}}
+}{%
+  \end{longtable}
+}
+
+\newcommand\experience[7]{
+  \textsc{#1}    & \textsc{#2, #3, #4}   								\\
+  \textsc{#5}    & \begin{minipage}[t]{\rightcolumnlength}
+  					         #6
+                   \end{minipage}										\\
+                 & \footnotesize{\emph{Technologies utilisées:} #7 } 	\\
+  }
+
+\newcommand\consultantexperience[9]{
+  \textsc{#1}    & \textsc{#2, #3, #4}   								\\
+  \textsc{#5}    & \emph{#6} pour #7                       				\\
+  				       & 	\begin{minipage}[t]{\rightcolumnlength}
+  						        #8
+                   	\end{minipage}										\\
+                 & \footnotesize{\emph{Technologies utilisées:} #9 } 	\\
+  }
+
+\newcommand\emptySeparator{\multicolumn{2}{c}{}\\}

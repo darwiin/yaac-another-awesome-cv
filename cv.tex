@@ -1,0 +1,29 @@
+% !TEX TS-program = xelatex
+
+\documentclass{darwiin-cv}
+
+%Italian hyphenation for the word: ''corporations''
+\hyphenation{im-pre-se}
+
+%------------------------------------------
+\begin{document}
+
+\setlist[itemize,1]{label=\faAngleRight, nosep, leftmargin=2em}	
+
+\pagestyle{empty} 												% non-numbered pages
+\font\fb=''[cmr10]'' 											% for use with \LaTeX command
+
+\input{section_perso}											% Personal data section
+
+\resumetitle{Architecte logiciel | Développeur/Concepteur JEE}
+
+%--------------------SECTIONS-----------------------------------
+\input{section_headline}
+\input{section_competences}										% Section compétence
+\input{section_experience_short}								% Section expérience
+\input{section_langues}											% Section langues
+\input{section_scolarite}										% Section scholarité
+%\input{section_interets}										% Section intérêts
+\input{section_references} 										% Section références
+
+\end{document}
