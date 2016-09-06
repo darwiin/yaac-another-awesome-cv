@@ -29,11 +29,11 @@
 \titleformat{\section}{\Large\raggedright}{}{0em}{}[\titlerule]
 \titlespacing{\section}{0pt}{2pt}{2pt}
 
+% Configure list
 \setlist[itemize,1]{label=\faAngleRight, nosep, leftmargin=2em} 
 
 % Setup Array : new column type
 \newcolumntype{R}[1]{>{\hfill}m{#1}}
-
 
 %Italian hyphenation for the word: ''corporations''
 \hyphenation{im-pre-se}
@@ -41,7 +41,6 @@
 % Setup fonts
 \defaultfontfeatures{Mapping=tex-text}
 \setmainfont[BoldFont = Helvetica Neue, ItalicFont=Helvetica Neue Thin Italic ,SmallCapsFont = Helvetica Neue Light]{Helvetica Neue Thin}
-
 
 %New length definition
 \newlength{\datebox}
@@ -55,17 +54,13 @@
 
 % Macros
 \newcommand{\el}{\enspace \faAngleRight \enspace}					        % Custom itemize to use with array
-\newcommand\user[2]{\color{Blue}{\LARGE #1 #2}\color{Black}}	    % Username
-%\newcommand\linkedin[2]{\faLinkedin \enspace \href{#1}{#2}}		    % Linkedin icon + URL
-%\newcommand\viadeo[2]{\faViadeo \enspace \href{#1}{#2}}           % Viadeo icon + URL
-%\newcommand\github[2]{\faGithub \enspace \href{#1}{#2}}           % Github icon + URL
-%\newcommand\address[1]{\faMapMarker \enspace #1}						      % Home icon + address as parameter
-%\newcommand\infos[1]{\faInfo \enspace #1}                         % I icon
-%\newcommand\smartphone[1]{\faMobilePhone \enspace #1}             % Smartphone Icon
-%\newcommand\email[2]{\faAt \enspace \href{mailto:#1}{#2}}   % Envelope Icon + mailto link
+
 \newcommand\link[2]{\href{#1}{#2} \faLink }
 \newcommand\important[1]{\textbf #1}
 
+% Render author's name
+% Usage: \user{<firstanme>}{<lastname>}
+\newcommand\user[2]{\color{Blue}{\LARGE #1 #2}\color{Black}}      % Username
 
 % Render a text with its symbol
 % Usage; \socialtext{<icon>}{<label>}
@@ -114,20 +109,20 @@
 
 \newcommand\resumetitle[1]{
 	\par{
-		\bigskip\center{\Large #1}\par
+		\bigskip\center{\Large \color{Blue}#1\color{Black}}\par
 	}
 	\bigskip
 }
 
+% Define social entries to print in header
 \newcommand{\socialinfo}[1]{\def\@socialinfo{#1}}
 
+% Render CV header
+% Needs \firstname and \lastname to be defined
 \newcommand{\makecvheader}{
   \user{\@firstname}{\@lastname}\\
   \small{\@socialinfo}
-%    \renderAddress{\@address}\\
-%    \renderInfos{\@infos} 
 }
-
 
 %Resume part title definition
 \newcommand\sectionTitle[2]{\section{\texorpdfstring{\color{Blue}#2\enspace #1}{#1}}}
