@@ -18,16 +18,18 @@
 \RequirePackage{enumitem}
 \RequirePackage{longtable} 	
 
-
-
-
 % Setup hyperref package, and colours for links
 \definecolor{linkcolour}{rgb}{0,0.2,0.6}
 \hypersetup{colorlinks,breaklinks,urlcolor=linkcolour, linkcolor=linkcolour}
 
+\pagestyle{empty}                         % non-numbered pages
+\font\fb=''[cmr10]''                      % for use with \LaTeX command
+
 % Setup CV sections
 \titleformat{\section}{\Large\raggedright}{}{0em}{}[\titlerule]
 \titlespacing{\section}{0pt}{2pt}{2pt}
+
+\setlist[itemize,1]{label=\faAngleRight, nosep, leftmargin=2em} 
 
 % Setup Array : new column type
 \newcolumntype{R}[1]{>{\hfill}m{#1}}
@@ -54,15 +56,61 @@
 % Macros
 \newcommand{\el}{\enspace \faAngleRight \enspace}					        % Custom itemize to use with array
 \newcommand\user[2]{\color{Blue}{\LARGE #1 #2}\color{Black}}	    % Username
-\newcommand\linkedin[2]{\faLinkedin \enspace \href{#1}{#2}}		    % Linkedin icon + URL
-\newcommand\viadeo[2]{\faViadeo \enspace \href{#1}{#2}}           % Viadeo icon + URL
-\newcommand\github[2]{\faGithub \enspace \href{#1}{#2}}           % Github icon + URL
-\newcommand\address[1]{\faMapMarker \enspace #1}						      % Home icon + address as parameter
-\newcommand\infos[1]{\faInfo \enspace #1}                         % I icon
-\newcommand\smartphone[1]{\faMobilePhone \enspace #1}             % Smartphone Icon
-\newcommand\email[2]{\faAt \enspace \href{mailto:#1}{#2}}   % Envelope Icon + mailto link
+%\newcommand\linkedin[2]{\faLinkedin \enspace \href{#1}{#2}}		    % Linkedin icon + URL
+%\newcommand\viadeo[2]{\faViadeo \enspace \href{#1}{#2}}           % Viadeo icon + URL
+%\newcommand\github[2]{\faGithub \enspace \href{#1}{#2}}           % Github icon + URL
+%\newcommand\address[1]{\faMapMarker \enspace #1}						      % Home icon + address as parameter
+%\newcommand\infos[1]{\faInfo \enspace #1}                         % I icon
+%\newcommand\smartphone[1]{\faMobilePhone \enspace #1}             % Smartphone Icon
+%\newcommand\email[2]{\faAt \enspace \href{mailto:#1}{#2}}   % Envelope Icon + mailto link
 \newcommand\link[2]{\href{#1}{#2} \faLink }
 \newcommand\important[1]{\textbf #1}
+
+
+% Render a text with its symbol
+% Usage; \socialtext{<icon>}{<label>}
+\newcommand{\socialtext}[2]{\mbox{\textcolor{Blue}{#1}\hspace{0.5em}#2\hspace{1em}}}
+
+% Render a link with its symbol
+% Usage; \sociallink{<icon>}{<label>}
+\newcommand{\sociallink}[3]{\mbox{\textcolor{Blue}{#1}\hspace{0.5em}\href{#2}{#3}\hspace{1em}}}
+
+% Define author's name
+% Usage: \name{<firstname>}{<lastname>}
+% Usage: \firstname{<firstname>}
+% Usage: \lastname{<lastname>}
+% Usage: \familyname{<familyname>}
+\newcommand*{\name}[2]{\def\@firstname{#1}\def\@lastname{#2}}
+\newcommand*{\firstname}[1]{\def\@firstname{#1}}
+\newcommand*{\lastname}[1]{\def\@lastname{#1}}
+\newcommand*{\familyname}[1]{\def\@lastname{#1}}
+\def\@familyname{\@lastname}
+
+% Render author's address
+% Usage: \address{<address>}
+\newcommand*{\address}[1]{\socialtext{\faMapMarker}{#1}}
+
+% Render author's infos
+% Usage: \infos{<infos>}
+\newcommand*{\infos}[1]{\socialtext{\faInfo}{#1}}
+
+% Render author's linked-in (optional)
+% Usage: \linkedin{<linked-in-nick>}
+\newcommand*{\linkedin}[1]{\sociallink{\faLinkedin}{http://www.linkedin.com/in/#1/fr}{linkedin.com/in/#1}}
+
+% Render author's viadeo(optional)
+% Usage: \viadeo{<viadeo-nick>}
+\newcommand*{\viadeo}[1]{\sociallink{\faViadeo}{http://www.viadeo.com/fr/profile/#1}{viadeo.com/fr/profile/#1}} 
+
+% Render author's github (optional)
+% Usage: \github{<github-nick>}
+\newcommand*{\github}[1]{\sociallink{\faGithub}{https://www.github.com/#1}{github.com/#1}}           % Github icon + URL
+
+% Render author's email (optional)
+% Usage: \email{<email adress>}
+\newcommand*{\email}[1]{\sociallink{\faAt}{mailto:#1}{#1}}
+
+\newcommand*\smartphone[1]{\socialtext{\faMobilePhone}{#1}}    
 
 \newcommand\resumetitle[1]{
 	\par{
@@ -71,7 +119,14 @@
 	\bigskip
 }
 
+\newcommand{\socialinfo}[1]{\def\@socialinfo{#1}}
 
+\newcommand{\makecvheader}{
+  \user{\@firstname}{\@lastname}\\
+  \small{\@socialinfo}
+%    \renderAddress{\@address}\\
+%    \renderInfos{\@infos} 
+}
 
 
 %Resume part title definition
