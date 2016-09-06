@@ -1,4 +1,4 @@
-\ProvidesClass{darwiin-cv}[2015/10/04 v1.0 Christophe ROGER CV Class]
+\ProvidesClass{darwiin-cv}[2015/10/04 v1.1 Christophe ROGER CV Class]
 
 \LoadClass[11pt,a4paper]{article}
 
