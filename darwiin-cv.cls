@@ -18,6 +18,10 @@
 \RequirePackage{enumitem}
 \RequirePackage{longtable} 	
 
+\definecolor{myBlue}{HTML}{191970}
+
+\colorlet{accent}{myBlue}
+
 % Setup hyperref package, and colours for links
 \definecolor{linkcolour}{rgb}{0,0.2,0.6}
 \hypersetup{colorlinks,breaklinks,urlcolor=linkcolour, linkcolor=linkcolour}
@@ -40,7 +44,8 @@
 
 % Setup fonts
 \defaultfontfeatures{Mapping=tex-text}
-\setmainfont[BoldFont = Helvetica Neue, ItalicFont=Helvetica Neue Thin Italic ,SmallCapsFont = Helvetica Neue Light]{Helvetica Neue Thin}
+%\setmainfont[BoldFont = Helvetica Neue, ItalicFont=Helvetica Neue Thin Italic ,SmallCapsFont = Helvetica Neue Light]{Helvetica Neue Thin}
+\setmainfont[BoldFont = Source Sans Pro Semibold, ItalicFont=Source Sans Pro Light Italic,SmallCapsFont = Source Sans Pro]{Source Sans Pro Light}
 
 %New length definition
 \newlength{\datebox}
@@ -60,15 +65,15 @@
 
 % Render author's name
 % Usage: \user{<firstanme>}{<lastname>}
-\newcommand\user[2]{\color{Blue}{\LARGE #1 #2}\color{Black}}      % Username
+\newcommand\user[2]{\color{accent}{\LARGE #1 \textbf{#2}}\color{Black}}      % Username
 
 % Render a text with its symbol
 % Usage; \socialtext{<icon>}{<label>}
-\newcommand{\socialtext}[2]{\mbox{\textcolor{Blue}{#1}\hspace{0.5em}#2\hspace{1em}}}
+\newcommand{\socialtext}[2]{\mbox{\textcolor{accent}{#1}\hspace{0.5em}#2\hspace{1em}}}
 
 % Render a link with its symbol
 % Usage; \sociallink{<icon>}{<label>}
-\newcommand{\sociallink}[3]{\mbox{\textcolor{Blue}{#1}\hspace{0.5em}\href{#2}{#3}\hspace{1em}}}
+\newcommand{\sociallink}[3]{\mbox{\textcolor{accent}{#1}\hspace{0.5em}\href{#2}{#3}\hspace{1em}}}
 
 % Define author's name
 % Usage: \name{<firstname>}{<lastname>}
@@ -105,11 +110,13 @@
 % Usage: \email{<email adress>}
 \newcommand*{\email}[1]{\sociallink{\faAt}{mailto:#1}{#1}}
 
+% Render author's mobile phone (optional)
+% Usage: \smartphone{<mobile phone number>}
 \newcommand*\smartphone[1]{\socialtext{\faMobilePhone}{#1}}    
 
 \newcommand\resumetitle[1]{
 	\par{
-		\bigskip\center{\Large \color{Blue}#1\color{Black}}\par
+		\bigskip\center{\Large \color{accent}#1\color{Black}}\par
 	}
 	\bigskip
 }
@@ -125,8 +132,9 @@
 }
 
 %Resume part title definition
-\newcommand\sectionTitle[2]{\section{\texorpdfstring{\color{Blue}#2\enspace #1}{#1}}}
+\newcommand\sectionTitle[2]{\section{\texorpdfstring{\color{accent}#2\enspace #1}{#1}}}
 
+% Define the 'experiences' environment
 \newenvironment{experiences}{%
   \begin{longtable}{R{\leftcolumn}|p{\rightcolumnlength}}
 }{%
