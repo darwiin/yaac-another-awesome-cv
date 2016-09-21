@@ -1,4 +1,4 @@
-latex-classicalcv [![Example](https://img.shields.io/badge/Exemple-pdf-blue.svg)](https://raw.githubusercontent.com/posquit0/Awesome-CV/master/examples/resume.pdf)
+Source Awesome CV [![Example](https://img.shields.io/badge/Exemple-pdf-blue.svg)](https://raw.githubusercontent.com/posquit0/Awesome-CV/master/examples/resume.pdf)
 =================
 
 Latex CV based on CV template created by Alessandro Plasmati. The original templates utilizes _XeLaTeX_ engine and _Fontin_ font. 
@@ -8,7 +8,7 @@ More informations can be found here :
    -  [ LaTeX Templates ](http://www.latextemplates.com/template/plasmati-graduate-cv)
    -  [ ShareLatex ](https://www.sharelatex.com/templates/cv-or-resume/professional-cv)
 
-I choose to move _Personal data_ have on top of the page just before the professional title. I've also replaced default font by _Helvetica Neue_ 
+I choose to move _Personal data_ on top of the page just before the professional title. I've also replaced default font by _[Source Sans Pro Font](https://github.com/adobe-fonts/source-sans-pro)_ 
 and included _Font Awesome_ items.
 
 I've chosen to cut my resume in a couple of smaller files and to add some macro to make the main latex source code more readable. 
@@ -23,8 +23,10 @@ I've chosen to cut my resume in a couple of smaller files and to add some macro 
 % Usage: \tagline{<tag line>} 
 % Mandatory
 \tagline{Chef de projet IT}
+```
 
 
+```latex
 \socialinfo{
   \linkedin{christopheroger}
   \viadeo{christopheroger}
@@ -47,7 +49,7 @@ To describe your experiences you have first to declare the **experiences** envir
 \end{experiences}
 ```
 
-Then you can fill the environment with **\experience** and **\consultantexperience** entries. Each
+Then you can describe your experiences using **\experience** and **\consultantexperience** entries. Each
 entry must be separated by the **\emptyseparator** 
 
 ```latex
@@ -86,5 +88,3 @@ entry must be separated by the **\emptyseparator**
                     {Technology highlights}
 \end{experiences}
 ```
-
-Another macro has been set to perform conditional include. You have to put \demotrue or \demofalse once in your file to use \conditionalinput macro

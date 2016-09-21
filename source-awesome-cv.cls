@@ -1,4 +1,4 @@
-\ProvidesClass{simple-awesome-cv}[2016/09/20 v1.2 Simple Awesome CV Class]
+\ProvidesClass{source-awesome-cv}[2016/09/20 v1.2 Source Awesome CV Class]
 
 \LoadClass[11pt,a4paper]{article}
 
@@ -11,9 +11,9 @@
 \setColors{Blue}{Blue}{Blue}
 
 \DeclareOption{green}{
-  \renewcommand{\accentColor}{\color{Green}}
-  \renewcommand{\linkColor}{\color{Green}}
-  \renewcommand{\symbolcolor}{\textcolor{Green}}
+  \renewcommand{\accentColor}{\color{PineGreen}}
+  \renewcommand{\linkColor}{\color{PineGreen}}
+  \renewcommand{\symbolcolor}{\textcolor{PineGreen}}
 }
 \DeclareOption{red}{
   \renewcommand{\accentColor}{\color{Red}}
@@ -150,7 +150,7 @@
 
 \newcommand\resumetitle[1]{
 	\par{
-		\bigskip\center{\Large \accentColor#1\color{Black}}\par
+		\bigskip\center{\Large \accentColor\textsc{#1}\color{Black}}\par
 	}
 	\bigskip
 }
