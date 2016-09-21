@@ -29,14 +29,14 @@ I've chosen to cut my resume in a couple of smaller files and to add some macro 
   \linkedin{christopheroger}
   \viadeo{christopheroger}
   \github{darwiin}\\
-  \smartphone{+687 831 831}
-  \email{christophe.roger@gmail.com}\\
-  \address{2 Rue Henri Lafleur, 98835 Dumbéa, Nouvelle-Calédonie}\\
+  \smartphone{+687 123 456}
+  \email{christophe.roger@mail.com}\\
+  \address{2 Rue du quartier, 98765 Ville, Pays}\\
   \infos{Né le 23 septembre 1982 (33 ans) à Nouméa, Nouvelle-Calédonie}
 }
 ```
 
-To describe your experiences you have first to declare the _experiences_ environment
+To describe your experiences you have first to declare the **experiences** environment
 
 ```latex
 % Begin a new experiences environment to use experience and consultantexperience macro
@@ -47,8 +47,8 @@ To describe your experiences you have first to declare the _experiences_ environ
 \end{experiences}
 ```
 
-Then you can fill the environment with \experience and \consultantexperience entries. Each
-entry must be separated by the \emptyseparator 
+Then you can fill the environment with **\experience** and **\consultantexperience** entries. Each
+entry must be separated by the **\emptyseparator** 
 
 ```latex
 % Begin a new experiences environment to use experience and consultantexperience macro
