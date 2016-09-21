@@ -1,4 +1,4 @@
-latex-classicalcv [![Example](https://img.shields.io/badge/Exemple-pdf-blue.svg)](https://raw.githubusercontent.com/posquit0/Awesome-CV/master/examples/resume.pdf)
+Source Awesome CV [![Example](https://img.shields.io/badge/Exemple-pdf-blue.svg)](https://raw.githubusercontent.com/posquit0/Awesome-CV/master/examples/resume.pdf)
 =================
 
 Latex CV based on CV template created by Alessandro Plasmati. The original templates utilizes _XeLaTeX_ engine and _Fontin_ font. 
@@ -24,6 +24,7 @@ I've chosen to cut my resume in a couple of smaller files and to add some macro 
 % Mandatory
 \tagline{Chef de projet IT}
 ```
+
 
 ```latex
 \socialinfo{
