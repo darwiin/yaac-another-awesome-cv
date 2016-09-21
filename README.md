@@ -1,4 +1,4 @@
-latex-classicalcv [![Example](https://img.shields.io/badge/Exemple-pdf-blue.svg)](https://raw.githubusercontent.com/posquit0/Awesome-CV/master/examples/resume.pdf)
+Source Awesome CV [![Example](https://img.shields.io/badge/Exemple-pdf-blue.svg)](https://raw.githubusercontent.com/posquit0/Awesome-CV/master/examples/resume.pdf)
 =================
 
 Latex CV based on CV template created by Alessandro Plasmati. The original templates utilizes _XeLaTeX_ engine and _Fontin_ font. 
@@ -8,21 +8,37 @@ More informations can be found here :
    -  [ LaTeX Templates ](http://www.latextemplates.com/template/plasmati-graduate-cv)
    -  [ ShareLatex ](https://www.sharelatex.com/templates/cv-or-resume/professional-cv)
 
-I choose to move _Personal data_ have on top of the page just before the professional title. I've also replaced default font by _Helvetica Neue_ 
+I choose to move _Personal data_ on top of the page just before the professional title. I've also replaced default font by _[Source Sans Pro Font](https://github.com/adobe-fonts/source-sans-pro)_ 
 and included _Font Awesome_ items.
 
 I've chosen to cut my resume in a couple of smaller files and to add some macro to make the main latex source code more readable. 
 
 ```latex
-\user{firstname}{LASTNAME}
-\linkedin{{link}{Link Description}}
-\address{12, Dummy Road, 000000, Dummy Country}
-\infos{Dummy infos (birthday, etc...)}
-\smartphone{+687 000 000}
-\email{mail@dummy-mail.com}
+% Define author's name
+% Usage: \name{<firstname>}{<lastname>}
+% Mandatory
+\name{Christophe}{ROGER}
+
+% Define author's tagline
+% Usage: \tagline{<tag line>} 
+% Mandatory
+\tagline{Chef de projet IT}
 ```
 
-To describe your experiences you have first to declare the _experiences_ environment
+
+```latex
+\socialinfo{
+  \linkedin{christopheroger}
+  \viadeo{christopheroger}
+  \github{darwiin}\\
+  \smartphone{+687 123 456}
+  \email{christophe.roger@mail.com}\\
+  \address{2 Rue du quartier, 98765 Ville, Pays}\\
+  \infos{Né le 23 septembre 1982 (33 ans) à Nouméa, Nouvelle-Calédonie}
+}
+```
+
+To describe your experiences you have first to declare the **experiences** environment
 
 ```latex
 % Begin a new experiences environment to use experience and consultantexperience macro
@@ -33,11 +49,14 @@ To describe your experiences you have first to declare the _experiences_ environ
 \end{experiences}
 ```
 
+Then you can describe your experiences using **\experience** and **\consultantexperience** entries. Each
+entry must be separated by the **\emptyseparator** 
+
 ```latex
 % Begin a new experiences environment to use experience and consultantexperience macro
 \begin{experiences}
 
-% The experience macro work as below and can be used to describe a job experience
+% The experience entry work as below and can be used to describe a job experience
   \experience
     {End date}      {Experience title}{Enterprise}{Country}
     {Begin date}    {
@@ -69,5 +88,3 @@ To describe your experiences you have first to declare the _experiences_ environ
                     {Technology highlights}
 \end{experiences}
 ```
-
-Another macro has been set to perform conditional include. You have to put \demotrue or \demofalse once in your file to use \conditionalinput macro
