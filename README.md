@@ -22,7 +22,16 @@ I've chosen to cut my resume in a couple of smaller files and to add some macro 
 \email{mail@dummy-mail.com}
 ```
 
-The experices section has to follow this template: 
+To describe your experiences you have first to declare the _experiences_ environment
+
+```latex
+% Begin a new experiences environment to use experience and consultantexperience macro
+\begin{experiences}
+
+% Here's go your experiences
+
+\end{experiences}
+```
 
 ```latex
 % Begin a new experiences environment to use experience and consultantexperience macro
