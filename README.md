@@ -1,17 +1,16 @@
-Source Awesome CV [![Example](https://img.shields.io/badge/Exemple-pdf-blue.svg)](https://raw.githubusercontent.com/posquit0/Awesome-CV/master/examples/resume.pdf)
+Awesome Source CV [![Example](https://img.shields.io/badge/Exemple-pdf-blue.svg)](https://raw.githubusercontent.com/posquit0/Awesome-CV/master/examples/resume.pdf)
 =================
 
-Latex CV based on CV template created by Alessandro Plasmati. The original templates utilizes _XeLaTeX_ engine and _Fontin_ font. 
+Latex CV based on CV template created by Alessandro Plasmati. The original templates use _XeLaTeX_ engine and _Fontin_ font. 
 More informations can be found here :
 
    -  [ Scribd ](http://fr.scribd.com/doc/16335667/Writing-your-Professional-CV-with-LaTeX)
    -  [ LaTeX Templates ](http://www.latextemplates.com/template/plasmati-graduate-cv)
    -  [ ShareLatex ](https://www.sharelatex.com/templates/cv-or-resume/professional-cv)
 
-I choose to move _Personal data_ on top of the page just before the professional title. I've also replaced default font by _[Source Sans Pro Font](https://github.com/adobe-fonts/source-sans-pro)_ 
-and included _Font Awesome_ items.
+I choose to move _Personal data_ on top of the page just before the professional title. I've also replaced default font by _[Source Sans Pro Font](https://github.com/adobe-fonts/source-sans-pro)_ and included _[Font Awesome](http://fontawesome.io/)_ icons.
 
-I've chosen to cut my resume in a couple of smaller files and to add some macro to make the main latex source code more readable. 
+I've chosen to cut my resume in a couple of smaller files and to create a class file to make the main latex source code more readable. 
 
 ```latex
 % Define author's name
