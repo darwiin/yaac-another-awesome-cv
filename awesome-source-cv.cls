@@ -29,6 +29,10 @@
   \renewcommand{\linkColor}{\color{myBlue}}
   \renewcommand{\symbolcolor}{\textcolor{myBlue}}
 }
+
+\DeclareOption{localFont}{
+  \def\@local{local}
+}
 \ProcessOptions
 
 % Dependences
@@ -46,6 +50,7 @@
 \RequirePackage{array}
 \RequirePackage{enumitem}
 \RequirePackage{longtable} 	
+\RequirePackage{xifthen}
 
 \definecolor{myBlue}{HTML}{FF9B1C}
 
@@ -71,12 +76,20 @@
 
 % Setup fonts
 \defaultfontfeatures{Mapping=tex-text}
-%\setmainfont[BoldFont = Helvetica Neue, ItalicFont=Helvetica Neue Thin Italic ,SmallCapsFont = Helvetica Neue Light]{Helvetica Neue Thin}
-\setmainfont{SourceSansPro-Light}[
-  Path = fonts/, 
-    BoldFont = SourceSansPro-Semibold, 
-    ItalicFont = SourceSansPro-LightIt, 
-    SmallCapsFont = SourceSansPro-Regular]
+%
+
+\ifthenelse{\isundefined{\@local}}
+{
+  %\setmainfont[BoldFont = Helvetica Neue, ItalicFont=Helvetica Neue Thin Italic ,SmallCapsFont = Helvetica Neue Light]{Helvetica Neue Thin}
+  \setmainfont[BoldFont = Source Sans Pro Semibold, ItalicFont=Source Sans Pro Light Italic,SmallCapsFont = Source Sans Pro]{Source Sans Pro Light}
+}
+{
+  \setmainfont{SourceSansPro-Light}[
+    Path = fonts/, 
+      BoldFont = SourceSansPro-Semibold, 
+      ItalicFont = SourceSansPro-LightIt, 
+      SmallCapsFont = SourceSansPro-Regular]
+}
 
 %New length definition
 \newlength{\datebox}
