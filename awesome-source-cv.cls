@@ -1,4 +1,4 @@
-\ProvidesClass{source-awesome-cv}[2016/09/20 v1.2 Source Awesome CV Class]
+\ProvidesClass{awesome-source-cv}[2016/09/20 v1.2 Awesome Source CV Class]
 
 \LoadClass[11pt,a4paper]{article}
 
@@ -8,22 +8,30 @@
   \newcommand{\symbolcolor}{\textcolor{#1}}
 }
 
+\newcommand{\resetColors}[3] {
+  \renewcommand{\accentColor}{\color{#1}}
+  \renewcommand{\linkColor}{\color{#1}}
+  \renewcommand{\symbolcolor}{\textcolor{#1}}
+}
+
 \setColors{Blue}{Blue}{Blue}
 
 \DeclareOption{green}{
-  \renewcommand{\accentColor}{\color{PineGreen}}
-  \renewcommand{\linkColor}{\color{PineGreen}}
-  \renewcommand{\symbolcolor}{\textcolor{PineGreen}}
+  \resetColors{PineGreen}{PineGreen}{PineGreen}
 }
+
 \DeclareOption{red}{
-  \renewcommand{\accentColor}{\color{Red}}
-  \renewcommand{\linkColor}{\color{Red}}
-  \renewcommand{\symbolcolor}{\textcolor{Red}}
+  \resetColors{Red}{Red}{Red}
 }
+
 \DeclareOption{myBlue}{
   \renewcommand{\accentColor}{\color{myBlue}}
   \renewcommand{\linkColor}{\color{myBlue}}
   \renewcommand{\symbolcolor}{\textcolor{myBlue}}
+}
+
+\DeclareOption{localFont}{
+  \def\@local{local}
 }
 \ProcessOptions
 
@@ -42,6 +50,7 @@
 \RequirePackage{array}
 \RequirePackage{enumitem}
 \RequirePackage{longtable} 	
+\RequirePackage{xifthen}
 
 \definecolor{myBlue}{HTML}{FF9B1C}
 
@@ -67,8 +76,20 @@
 
 % Setup fonts
 \defaultfontfeatures{Mapping=tex-text}
-%\setmainfont[BoldFont = Helvetica Neue, ItalicFont=Helvetica Neue Thin Italic ,SmallCapsFont = Helvetica Neue Light]{Helvetica Neue Thin}
-\setmainfont[BoldFont = Source Sans Pro Semibold, ItalicFont=Source Sans Pro Light Italic,SmallCapsFont = Source Sans Pro]{Source Sans Pro Light}
+%
+
+\ifthenelse{\isundefined{\@local}}
+{
+  %\setmainfont[BoldFont = Helvetica Neue, ItalicFont=Helvetica Neue Thin Italic ,SmallCapsFont = Helvetica Neue Light]{Helvetica Neue Thin}
+  \setmainfont[BoldFont = Source Sans Pro Semibold, ItalicFont=Source Sans Pro Light Italic,SmallCapsFont = Source Sans Pro]{Source Sans Pro Light}
+}
+{
+  \setmainfont{SourceSansPro-Light}[
+    Path = fonts/, 
+      BoldFont = SourceSansPro-Semibold, 
+      ItalicFont = SourceSansPro-LightIt, 
+      SmallCapsFont = SourceSansPro-Regular]
+}
 
 %New length definition
 \newlength{\datebox}
