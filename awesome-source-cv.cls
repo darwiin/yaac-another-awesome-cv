@@ -78,6 +78,7 @@
 \defaultfontfeatures{Mapping=tex-text}
 %
 
+% Define font to use according to localFont option
 \ifthenelse{\isundefined{\@local}}
 {
   %\setmainfont[BoldFont = Helvetica Neue, ItalicFont=Helvetica Neue Thin Italic ,SmallCapsFont = Helvetica Neue Light]{Helvetica Neue Thin}
@@ -101,8 +102,12 @@
 \newlength{\leftcolumn}
 \setlength{\leftcolumn}{2.5cm}
 
+<<<<<<< Updated upstream
 % Macros
 
+=======
+% Font Awesome icons aliases
+>>>>>>> Stashed changes
 \newcommand{\mailSymbol}{\faAt}
 \newcommand{\locationSymbol}{\faMapMarker}
 \newcommand{\infoSymbol}{\faInfo}
@@ -187,7 +192,7 @@
   \resumetitle{\@tagline}
 }
 
-%Resume part title definition
+% Resume part title definition
 \newcommand\sectionTitle[2]{\section{\texorpdfstring{\accentColor#2\enspace #1}{#1}}}
 
 % Define the 'experiences' environment
@@ -196,6 +201,7 @@
 }{%
   \end{longtable}
 }
+
 % Render an experience in the experiences environment
 % Usage: 
 %  {<End date>}      {<Title>}{<Enterprise>}{<Country>}
