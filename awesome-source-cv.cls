@@ -102,12 +102,7 @@
 \newlength{\leftcolumn}
 \setlength{\leftcolumn}{2.5cm}
 
-<<<<<<< Updated upstream
-% Macros
-
-=======
 % Font Awesome icons aliases
->>>>>>> Stashed changes
 \newcommand{\mailSymbol}{\faAt}
 \newcommand{\locationSymbol}{\faMapMarker}
 \newcommand{\infoSymbol}{\faInfo}
