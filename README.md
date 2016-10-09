@@ -1,17 +1,21 @@
-Source Awesome CV [![Example](https://img.shields.io/badge/Exemple-pdf-blue.svg)](https://raw.githubusercontent.com/posquit0/Awesome-CV/master/examples/resume.pdf)
+Awesome Source CV [![Example](https://img.shields.io/badge/Exemple-pdf-blue.svg)](https://raw.githubusercontent.com/posquit0/Awesome-CV/master/examples/resume.pdf)
 =================
 
-Latex CV based on CV template created by Alessandro Plasmati. The original templates utilizes _XeLaTeX_ engine and _Fontin_ font. 
-More informations can be found here :
+## About
+
+**Awesome Source Latex CV** is based on a CV template created by Alessandro Plasmati. The original template use _XeLaTeX_ engine and _[Fontin Sans](http://www.exljbris.com/fontinsans.html)_ font. 
+
+Original Alessandro Plasmati template and more informations can be found here :
 
    -  [ Scribd ](http://fr.scribd.com/doc/16335667/Writing-your-Professional-CV-with-LaTeX)
    -  [ LaTeX Templates ](http://www.latextemplates.com/template/plasmati-graduate-cv)
    -  [ ShareLatex ](https://www.sharelatex.com/templates/cv-or-resume/professional-cv)
 
-I choose to move _Personal data_ on top of the page just before the professional title. I've also replaced default font by _[Source Sans Pro Font](https://github.com/adobe-fonts/source-sans-pro)_ 
-and included _Font Awesome_ items.
+**Personal data** has moved on top of the first page just before the position and _[Fontin Sans](http://www.exljbris.com/fontinsans.html)_ font has been replaced by _[Source Sans Pro Font](https://github.com/adobe-fonts/source-sans-pro)_ from Adobe. _[Font Awesome](http://fontawesome.io/)_ icons are used to highlight important elements.
 
-I've chosen to cut my resume in a couple of smaller files and to add some macro to make the main latex source code more readable. 
+Unlike _Alessandro Plasmati_ CV template, all layout stuff in **Awesome Source Latex CV** has moved in the Latex class file _awesome-source-cv.cls_.
+
+## How to use **Awesome Source CV** latex class
 
 ```latex
 % Define author's name
@@ -25,7 +29,6 @@ I've chosen to cut my resume in a couple of smaller files and to add some macro 
 \tagline{Chef de projet IT}
 ```
 
-
 ```latex
 \socialinfo{
   \linkedin{christopheroger}
@@ -34,7 +37,7 @@ I've chosen to cut my resume in a couple of smaller files and to add some macro 
   \smartphone{+687 123 456}
   \email{christophe.roger@mail.com}\\
   \address{2 Rue du quartier, 98765 Ville, Pays}\\
-  \infos{Né le 23 septembre 1982 (33 ans) à Nouméa, Nouvelle-Calédonie}
+  \infos{Né le 23 septembre 1982 (34 ans) à Nouméa, Nouvelle-Calédonie}
 }
 ```
 
