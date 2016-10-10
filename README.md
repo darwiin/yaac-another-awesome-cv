@@ -15,6 +15,10 @@ Original Alessandro Plasmati template and more informations can be found here :
 
 Unlike _Alessandro Plasmati_ CV template, all layout stuff in **Awesome Source Latex CV** has moved in the Latex class file _awesome-source-cv.cls_.
 
+## Quick start
+
+You can edit online **Awesome Source Latex CV** on [Overleaf](https://www.overleaf.com/latex/templates/awesome-source-cv/wrdjtkkytqcw). Feel free to use my [invite link](https://www.overleaf.com/signup?ref=54c221604cd6) if you want to create your account.
+
 ## How to use **Awesome Source CV** latex class
 
 ```latex
@@ -91,3 +95,8 @@ entry must be separated by the **\emptyseparator**
                     {Technology highlights}
 \end{experiences}
 ```
+
+## License
+
+Latex class file awesome-source-cv.cls is published under the term of the [LPPL Version 1.3c](https://www.latex-project.org/lppl.txt).
+All content files are published under the term of the [CC BY-SA 4.0 License](https://creativecommons.org/licenses/by-sa/4.0/legalcode)
