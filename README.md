@@ -1,4 +1,4 @@
-Awesome Source CV [![Example](https://img.shields.io/badge/Exemple-pdf-blue.svg)](https://raw.githubusercontent.com/posquit0/Awesome-CV/master/examples/resume.pdf)
+Awesome Source CV [![Example](https://img.shields.io/badge/Exemple-pdf-blue.svg)](https://github.com/darwiin/awesome-neue-latex-cv/releases/download/v1.2-github/cv.pdf)
 =================
 
 ## About
