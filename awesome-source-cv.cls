@@ -57,37 +57,24 @@
 \RequirePackage{tikz}
 \RequirePackage{pgffor}
 
-% Define default colors
-\definecolor{accentcolor}{rgb}{0,0.2,0.6}
-\definecolor{linkcolor}{rgb}{0,0.2,0.6}
-\definecolor{symbolcolor}{rgb}{0,0.2,0.6}
+% Define default accent colors
+\definecolor{basecolor}{HTML}{000066}       %BLUE
 
-\ifundef{\@green} 
-{
-  \ifundef{\@red} 
-  {
+\ifundef{\@green} {
+  \ifundef{\@red} {
     \ifundef{\@indigo}
     {}
-    {
-      \definecolor{accentcolor}{rgb}{0.2, 0.07, 0.48}
-      \definecolor{linkcolor}{rgb}{0.2, 0.07, 0.48}
-      \definecolor{symbolcolor}{rgb}{0.2, 0.07, 0.48}
-    }
+    { \definecolor{basecolor}{rgb}{0.2, 0.07, 0.48} }
   }
-  {
-    \definecolor{accentcolor}{rgb}{0.83, 0.0, 0.0}
-    \definecolor{linkcolor}{rgb}{0.83, 0.0, 0.0}
-    \definecolor{symbolcolor}{rgb}{0.83, 0.0, 0.0}
-  }  
+  { \definecolor{basecolor}{HTML}{b30000} }     %RED
 }
-{
-  \definecolor{accentcolor}{rgb}{0.0, 0.62, 0.38}
-  \definecolor{linkcolor}{rgb}{0.0, 0.62, 0.38}
-  \definecolor{symbolcolor}{rgb}{0.0, 0.62, 0.38}
-}
-
+{ \definecolor{basecolor}{rgb}{0.0, 0.62, 0.38} }
 
 \definecolor{darkGrey}{HTML}{989898}
+
+\colorlet{linkcolor}{basecolor}
+\colorlet{accentcolor}{linkcolor!90}
+\colorlet{symbolcolor}{linkcolor!85}
 
 % Setup hyperref package, and colours for links
 %\definecolor{linkcolour}{rgb}{0,0.2,0.6}
@@ -156,6 +143,13 @@
 \newcommand{\cvtag}[1]{%
   \tikz[baseline]\node[anchor=base,draw=darkGrey!70,rounded corners=0.5ex,inner xsep=1ex,inner ysep =0.55ex,text height=1.3ex,text depth=.25ex]{#1};
 }
+
+% Create skill level
+%\newcommand{\cvskill}[2]{%
+%\textcolor{accentcolor}{\textbf{#1}}\hfill
+%\foreach \x in {1,...,5}{%
+%  \space{\color{accentcolor} \ifnumgreater{\x}{#2}{\faCircleThin}{\faCircle}}}\par%
+%}
 
 % Render author's name
 % Usage: \user{<firstanme>}{<lastname>}
@@ -233,6 +227,20 @@
 % Resume part title definition
 \newcommand\sectionTitle[2]{\section{\texorpdfstring{\color{accentcolor}#2\enspace #1}{#1}}}
 
+% Define the 'skills' environment
+\newenvironment{skills}{%
+  \begin{longtable}{R{\leftcolumn}p{\rightcolumnlength}}
+}{%
+  \end{longtable}
+}
+
+% Render a skill in the skills environment
+% Usage: 
+% \skill{<skill>}{<level>}
+\newcommand\skill[2]{
+  \textsc{#1}    & \foreach \x in {1,...,5}{{\color{accentcolor!80} \ifnumgreater{\x}{#2}{\faCircleO}{\faCircle}}\enspace } \\
+  }
+
 % Define the 'experiences' environment
 \newenvironment{experiences}{%
   \begin{longtable}{R{\leftcolumn}|p{\rightcolumnlength}}
@@ -242,6 +250,7 @@
 
 % Render an experience in the experiences environment
 % Usage: 
+% \experience
 %  {<End date>}      {<Title>}{<Enterprise>}{<Country>}
 %  {<Start date}     {
 %                      <Experience description (Could be a list)>
@@ -257,6 +266,7 @@
 
 % Render a consultant experience in the experiences environment
 % Usage: 
+% \consultantexperience
 %  {<End date>}      {<Consultant title>}{<Consulting Enterprise>}{<Country>}
 %  {<Start date}     {<Client title>}{<Client business unit>}
 %                    {
