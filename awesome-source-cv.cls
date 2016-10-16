@@ -17,36 +17,20 @@
 %
 % This work consists of the files awesome-source-cv.cls 
 
-\ProvidesClass{awesome-source-cv}[2016/09/20 v1.2 Awesome Source CV Class]
+\ProvidesClass{awesome-source-cv}[2016/10/14 v1.3 Awesome Source CV Class]
 
 \LoadClass[11pt,a4paper]{article}
 
-\newcommand{\setColors}[3] {
-  \newcommand{\accentColor}{\color{#1}}
-  \newcommand{\linkColor}{\color{#1}}
-  \newcommand{\symbolcolor}{\textcolor{#1}}
-}
-
-\newcommand{\resetColors}[3] {
-  \renewcommand{\accentColor}{\color{#1}}
-  \renewcommand{\linkColor}{\color{#1}}
-  \renewcommand{\symbolcolor}{\textcolor{#1}}
-}
-
-\setColors{Blue}{Blue}{Blue}
-
 \DeclareOption{green}{
-  \resetColors{PineGreen}{PineGreen}{PineGreen}
+  \def\@green{green}
 }
 
 \DeclareOption{red}{
-  \resetColors{Red}{Red}{Red}
+  \def\@red{red}
 }
 
-\DeclareOption{myBlue}{
-  \renewcommand{\accentColor}{\color{myBlue}}
-  \renewcommand{\linkColor}{\color{myBlue}}
-  \renewcommand{\symbolcolor}{\textcolor{myBlue}}
+\DeclareOption{indigo}{
+  \def\@indigo{indigo}
 }
 
 \DeclareOption{localFont}{
@@ -69,12 +53,31 @@
 \RequirePackage{array}
 \RequirePackage{enumitem}
 \RequirePackage{longtable} 	
-\RequirePackage{xifthen}
+\RequirePackage{etoolbox}
+\RequirePackage{tikz}
+\RequirePackage{pgffor}
 
-\definecolor{myBlue}{HTML}{FF9B1C}
+% Define default accent colors
+\definecolor{basecolor}{HTML}{000066}       %BLUE
+
+\ifundef{\@green} {
+  \ifundef{\@red} {
+    \ifundef{\@indigo}
+    {}
+    { \definecolor{basecolor}{rgb}{0.2, 0.07, 0.48} }
+  }
+  { \definecolor{basecolor}{HTML}{b30000} }     %RED
+}
+{ \definecolor{basecolor}{rgb}{0.0, 0.62, 0.38} }
+
+\definecolor{darkGrey}{HTML}{989898}
+
+\colorlet{linkcolor}{basecolor}
+\colorlet{accentcolor}{linkcolor!90}
+\colorlet{symbolcolor}{linkcolor!85}
 
 % Setup hyperref package, and colours for links
-\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+%\definecolor{linkcolour}{rgb}{0,0.2,0.6}
 \hypersetup{breaklinks}
 
 \pagestyle{empty}                         % non-numbered pages
@@ -98,17 +101,20 @@
 %
 
 % Define font to use according to localFont option
-\ifthenelse{\isundefined{\@local}}
+\ifundef{\@local}
 {
   %\setmainfont[BoldFont = Helvetica Neue, ItalicFont=Helvetica Neue Thin Italic ,SmallCapsFont = Helvetica Neue Light]{Helvetica Neue Thin}
-  \setmainfont[BoldFont = Source Sans Pro Semibold, ItalicFont=Source Sans Pro Light Italic,SmallCapsFont = Source Sans Pro]{Source Sans Pro Light}
+  \setmainfont{Source Sans Pro Light}[
+    BoldFont = Source Sans Pro Semibold, 
+    ItalicFont= Source Sans Pro Light Italic,
+    SmallCapsFont = Source Sans Pro]
 }
 {
   \setmainfont{SourceSansPro-Light}[
     Path = fonts/, 
-      BoldFont = SourceSansPro-Semibold, 
-      ItalicFont = SourceSansPro-LightIt, 
-      SmallCapsFont = SourceSansPro-Regular]
+    BoldFont = SourceSansPro-Semibold, 
+    ItalicFont = SourceSansPro-LightIt, 
+    SmallCapsFont = SourceSansPro-Regular]
 }
 
 %New length definition
@@ -130,20 +136,32 @@
 \newcommand{\mobileSymbol}{\faMobilePhone}
 \newcommand{\githubSymbol}{\faGithub}
 
-\newcommand\link[2]{\linkColor\href{#1}{#2}\color{Black} }
+\newcommand\link[2]{\color{linkcolor}\href{#1}{#2}\color{Black} }
 \newcommand\important[1]{\textbf #1}
+
+% Create tag
+\newcommand{\cvtag}[1]{%
+  \tikz[baseline]\node[anchor=base,draw=darkGrey!70,rounded corners=0.5ex,inner xsep=1ex,inner ysep =0.55ex,text height=1.3ex,text depth=.25ex]{#1};
+}
+
+% Create skill level
+%\newcommand{\cvskill}[2]{%
+%\textcolor{accentcolor}{\textbf{#1}}\hfill
+%\foreach \x in {1,...,5}{%
+%  \space{\color{accentcolor} \ifnumgreater{\x}{#2}{\faCircleThin}{\faCircle}}}\par%
+%}
 
 % Render author's name
 % Usage: \user{<firstanme>}{<lastname>}
-\newcommand\user[2]{\accentColor{\LARGE #1 \textbf{#2}}\color{Black}}      % Username
+\newcommand\user[2]{\color{accentcolor}{\LARGE #1 \textbf{#2}}\color{Black}}      % Username
 
 % Render a text with its symbol
 % Usage; \socialtext{<icon>}{<label>}
-\newcommand{\socialtext}[2]{\mbox{\symbolcolor{#1}\hspace{0.5em}#2\hspace{1em}}}
+\newcommand{\socialtext}[2]{\mbox{\textcolor{symbolcolor}{#1}\hspace{0.5em}#2\hspace{1em}}}
 
 % Render a link with its symbol
 % Usage; \sociallink{<icon>}{<label>}
-\newcommand{\sociallink}[3]{\mbox{\symbolcolor{#1}\hspace{0.5em}\link{#2}{#3}\hspace{1em}}}
+\newcommand{\sociallink}[3]{\mbox{\textcolor{symbolcolor}{#1}\hspace{0.5em}\link{#2}{#3}\hspace{1em}}}
 
 % Define author's name
 % Usage: \name{<firstname>}{<lastname>}
@@ -190,7 +208,7 @@
 
 \newcommand\resumetitle[1]{
 	\par{
-		\bigskip\center{\Large \accentColor\textsc{#1}\color{Black}}\par
+		\bigskip\center{\Large \color{accentcolor}\textsc{#1}\color{Black}}\par
 	}
 	\bigskip
 }
@@ -207,7 +225,21 @@
 }
 
 % Resume part title definition
-\newcommand\sectionTitle[2]{\section{\texorpdfstring{\accentColor#2\enspace #1}{#1}}}
+\newcommand\sectionTitle[2]{\section{\texorpdfstring{\color{accentcolor}#2\enspace #1}{#1}}}
+
+% Define the 'skills' environment
+\newenvironment{skills}{%
+  \begin{longtable}{R{\leftcolumn}p{\rightcolumnlength}}
+}{%
+  \end{longtable}
+}
+
+% Render a skill in the skills environment
+% Usage: 
+% \skill{<skill>}{<level>}
+\newcommand\skill[2]{
+  \textsc{#1}    & \foreach \x in {1,...,5}{{\color{accentcolor!80} \ifnumgreater{\x}{#2}{\faCircleO}{\faCircle}}\enspace } \\
+  }
 
 % Define the 'experiences' environment
 \newenvironment{experiences}{%
@@ -218,6 +250,7 @@
 
 % Render an experience in the experiences environment
 % Usage: 
+% \experience
 %  {<End date>}      {<Title>}{<Enterprise>}{<Country>}
 %  {<Start date}     {
 %                      <Experience description (Could be a list)>
@@ -228,11 +261,12 @@
   \textsc{#5}    & \begin{minipage}[t]{\rightcolumnlength}
   					         #6
                    \end{minipage}										\\
-                 & \footnotesize{\emph{Technologies utilisées:} #7 } 	\\
+                 & \footnotesize{\foreach \n in {#7}{\cvtag{\n}}} 	\\
   }
 
 % Render a consultant experience in the experiences environment
 % Usage: 
+% \consultantexperience
 %  {<End date>}      {<Consultant title>}{<Consulting Enterprise>}{<Country>}
 %  {<Start date}     {<Client title>}{<Client business unit>}
 %                    {
@@ -245,7 +279,7 @@
   				       & 	\begin{minipage}[t]{\rightcolumnlength}
   						        #8
                    	\end{minipage}										\\
-                 & \footnotesize{\emph{Technologies utilisées:} #9 } 	\\
+                 & \footnotesize{\foreach \n in {#9}{\cvtag{\n}} } 	\\
   }
 
 \newcommand\emptySeparator{\multicolumn{2}{c}{}\\}
