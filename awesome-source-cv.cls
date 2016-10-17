@@ -227,6 +227,17 @@
 % Resume part title definition
 \newcommand\sectionTitle[2]{\section{\texorpdfstring{\color{accentcolor}#2\enspace #1}{#1}}}
 
+% Define the 'scolarship' environment
+\newenvironment{scolarship}{%
+  \begin{longtable}{R{\leftcolumn}p{\rightcolumnlength}}
+}{%
+  \end{longtable}
+}
+
+\newcommand\scolarshipentry[2]{
+  #1    &  #2 \\
+}
+
 % Define the 'skills' environment
 \newenvironment{skills}{%
   \begin{longtable}{R{\leftcolumn}p{\rightcolumnlength}}
@@ -239,7 +250,7 @@
 % \skill{<skill>}{<level>}
 \newcommand\skill[2]{
   \textsc{#1}    & \foreach \x in {1,...,5}{{\color{accentcolor!80} \ifnumgreater{\x}{#2}{\faCircleO}{\faCircle}}\enspace } \\
-  }
+}
 
 % Define the 'experiences' environment
 \newenvironment{experiences}{%
