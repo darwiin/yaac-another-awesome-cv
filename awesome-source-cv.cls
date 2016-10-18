@@ -227,11 +227,13 @@
 % Resume part title definition
 \newcommand\sectionTitle[2]{\section{\texorpdfstring{\color{accentcolor}#2\enspace #1}{#1}}}
 
+\newcolumntype{D}{>{\raggedleft}p{\leftcolumn}}
+
 % Define the 'scolarship' environment
 \newenvironment{scolarship}{%
-  \begin{longtable}{R{\leftcolumn}p{\rightcolumnlength}}
+  \begin{tabular}{D p{\rightcolumnlength}}
 }{%
-  \end{longtable}
+  \end{tabular}
 }
 
 \newcommand\scolarshipentry[2]{
