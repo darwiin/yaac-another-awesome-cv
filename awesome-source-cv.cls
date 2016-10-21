@@ -32,6 +32,9 @@
 \DeclareOption{indigo}{
   \def\@indigo{indigo}
 }
+\DeclareOption{orange}{
+  \def\@orange{orange}
+}
 
 \DeclareOption{localFont}{
   \def\@local{local}
@@ -62,8 +65,10 @@
 
 \ifundef{\@green} {
   \ifundef{\@red} {
-    \ifundef{\@indigo}
-    {}
+    \ifundef{\@indigo}{
+      \ifundef{\@orange} {}
+      { \definecolor{basecolor}{HTML}{e68a00} }
+    }
     { \definecolor{basecolor}{rgb}{0.2, 0.07, 0.48} }
   }
   { \definecolor{basecolor}{HTML}{b30000} }     %RED
