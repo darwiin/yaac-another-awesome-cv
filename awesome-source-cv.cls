@@ -125,9 +125,6 @@
 }
 
 %New length definition
-\newlength{\datebox}
-\settowidth{\datebox}{Décembre 2009}
-
 \newlength{\rightcolumnlength}
 \setlength{\rightcolumnlength}{14.8cm}
 
@@ -245,11 +242,11 @@
 \newcommand\sectionTitle[2]{\section{\texorpdfstring{\color{accentcolor}#2\enspace #1}{#1}}}
 
 % Define a new column type for the scholarship environment
-\newcolumntype{D}{>{\raggedleft}p{\leftcolumn}}
+\newcolumntype{Y}{>{\raggedleft}p{\leftcolumn}}
 
 % Define the 'scholarship' environment
 \newenvironment{scholarship}{%
-  \begin{tabular}{D p{\rightcolumnlength}}
+  \begin{tabular}{Y p{\rightcolumnlength}}
 }{%
   \end{tabular}
 }
@@ -273,9 +270,11 @@
   \textsc{#1}    & \foreach \x in {1,...,5}{{\color{accentcolor!80} \ifnumgreater{\x}{#2}{\faCircleO}{\faCircle}}\enspace } \\
 }
 
+\newcolumntype{E}{>{\raggedright\arraybackslash}p{\rightcolumnlength}}
+
 % Define the 'experiences' environment
 \newenvironment{experiences}{%
-  \begin{longtable}{R{\leftcolumn}|p{\rightcolumnlength}}
+  \begin{longtable}{R{\leftcolumn}|E}
 }{%
   \end{longtable}
 }
@@ -311,7 +310,7 @@
   				       & 	\begin{minipage}[t]{\rightcolumnlength}
   						        #8
                    	\end{minipage}										\\
-                 & \footnotesize{\foreach \n in {#9}{\cvtag{\n}} } 	\\
+                 & \footnotesize{\foreach \n in {#9}{\cvtag{\n}}} 	\\
   }
 
 \newcommand\emptySeparator{\multicolumn{2}{c}{}\\}

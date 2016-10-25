@@ -21,17 +21,43 @@ You can edit online **Awesome Source Latex CV** on [Overleaf](https://www.overle
 
 ## How to use **Awesome Source CV** latex class
 
+### Construct the header
+
 ```latex
 % Define author's name
 % Usage: \name{<firstname>}{<lastname>}
 % Mandatory
 \name{Christophe}{ROGER}
 
+% Define author's photo (optional)
+% Usage \photo{<diameter>}{<photo>}
+\photo{2.5cm}{darwiin}
+
 % Define author's tagline
 % Usage: \tagline{<tag line>} 
 % Mandatory
 \tagline{Chef de projet IT}
 ```
+
+```latex
+% Render author's linked-in (optional)
+% Usage: \linkedin{<linked-in-nick>}
+\linkedin{christopheroger}
+
+% Render author's viadeo(optional)
+% Usage: \viadeo{<viadeo-nick>}
+\viadeo{christopheroger}
+
+% Render author's github (optional)
+% Usage: \github{<github-nick>}
+\github{darwiin}
+
+% Render author's email (optional)
+% Usage: \email{<email adress>}
+\email{christophe.roger@mail.com}
+```
+
+The command above must be integrated in the `\socialinfo` wrapper
 
 ```latex
 \socialinfo{
@@ -45,7 +71,9 @@ You can edit online **Awesome Source Latex CV** on [Overleaf](https://www.overle
 }
 ```
 
-To describe your experiences you have first to declare the **experiences** environment
+### Construct the _experiences_ section
+
+To describe your experiences you have first to declare the `experiences` environment
 
 ```latex
 % Begin a new experiences environment to use experience and consultantexperience macro
