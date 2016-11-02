@@ -23,7 +23,7 @@ You can edit online **Awesome Source Latex CV** on [Overleaf](https://www.overle
 
 ### Construct the header
 
-Outside of the `\socialinfo` wrapper you have to define the mandatory parameters `\name`and `\tagline`.
+Outside of the `\socialinfo` wrapper you have to define the mandatory parameters `\name` and `\tagline`.
 
 ```latex
 % Define author's name
@@ -41,7 +41,7 @@ Outside of the `\socialinfo` wrapper you have to define the mandatory parameters
 \tagline{Chef de projet IT}
 ```
 
-Most social network have their command to render a clickable link or simple text label.
+Most social network have their command to render a clickable link or a simple text entry.
 
 ```latex
 % Render author's linked-in (optional)
@@ -61,7 +61,7 @@ Most social network have their command to render a clickable link or simple text
 \email{christophe.roger@mail.com}
 ```
 
-The command above must be integrated in the `\socialinfo` wrapper. You are free to add `\\` when you want to force a new line.
+Put these command in the `\socialinfo` wrapper. Feel free to add `\\` when you want to force a new line.
 
 ```latex
 \socialinfo{
@@ -73,6 +73,12 @@ The command above must be integrated in the `\socialinfo` wrapper. You are free 
   \address{2 Rue du quartier, 98765 Ville, Pays}\\
   \infos{Né le 23 septembre 1982 (34 ans) à Nouméa, Nouvelle-Calédonie}
 }
+```
+
+Use the `\makecvheader`commabd to generate the header.
+
+```latex
+\makecvheader
 ```
 
 ### Construct the _experiences_ section
