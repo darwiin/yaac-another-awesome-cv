@@ -75,7 +75,7 @@ Put these command in the `\socialinfo` wrapper. Feel free to add `\\` when you w
 }
 ```
 
-Use the `\makecvheader`commabd to generate the header.
+Use the `\makecvheader`command to generate the header.
 
 ```latex
 \makecvheader
