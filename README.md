@@ -5,7 +5,7 @@ Awesome Source CV [![Example](https://img.shields.io/badge/Exemple-pdf-blue.svg)
 
 **Awesome Source Latex CV** is based on a CV template created by Alessandro Plasmati. The original template use _XeLaTeX_ engine and _[Fontin Sans](http://www.exljbris.com/fontinsans.html)_ font. 
 
-Original Alessandro Plasmati template and more informations can be found here :
+More informations about the original Alessandro Plasmati template can be found here :
 
    -  [ Scribd ](http://fr.scribd.com/doc/16335667/Writing-your-Professional-CV-with-LaTeX)
    -  [ LaTeX Templates ](http://www.latextemplates.com/template/plasmati-graduate-cv)
@@ -17,9 +17,13 @@ Unlike _Alessandro Plasmati_ CV template, all layout stuff in **Awesome Source L
 
 ## Quick start
 
-You can edit online **Awesome Source Latex CV** on [Overleaf](https://www.overleaf.com/latex/templates/awesome-source-cv/wrdjtkkytqcw). Feel free to use my [invite link](https://www.overleaf.com/signup?ref=54c221604cd6) if you want to create your account.
+You can edit online **Awesome Source Latex CV** on [Overleaf](https://www.overleaf.com/latex/templates/awesome-source-cv/wrdjtkkytqcw). Feel free to use my [referal link](https://www.overleaf.com/signup?ref=54c221604cd6) if you want to create your account.
 
 ## How to use **Awesome Source CV** latex class
+
+### Construct the header
+
+Outside of the `\socialinfo` wrapper you have to define the mandatory parameters `\name` and `\tagline`.
 
 ```latex
 % Define author's name
@@ -27,11 +31,37 @@ You can edit online **Awesome Source Latex CV** on [Overleaf](https://www.overle
 % Mandatory
 \name{Christophe}{ROGER}
 
+% Define author's photo (optional)
+% Usage \photo{<diameter>}{<photo>}
+\photo{2.5cm}{darwiin}
+
 % Define author's tagline
 % Usage: \tagline{<tag line>} 
 % Mandatory
 \tagline{Chef de projet IT}
 ```
+
+Most social network have their command to render a clickable link or a simple text entry.
+
+```latex
+% Render author's linked-in (optional)
+% Usage: \linkedin{<linked-in-nick>}
+\linkedin{christopheroger}
+
+% Render author's viadeo(optional)
+% Usage: \viadeo{<viadeo-nick>}
+\viadeo{christopheroger}
+
+% Render author's github (optional)
+% Usage: \github{<github-nick>}
+\github{darwiin}
+
+% Render author's email (optional)
+% Usage: \email{<email adress>}
+\email{christophe.roger@mail.com}
+```
+
+Put these command in the `\socialinfo` wrapper. Feel free to add `\\` when you want to force a new line.
 
 ```latex
 \socialinfo{
@@ -45,7 +75,15 @@ You can edit online **Awesome Source Latex CV** on [Overleaf](https://www.overle
 }
 ```
 
-To describe your experiences you have first to declare the **experiences** environment
+Use the `\makecvheader`commabd to generate the header.
+
+```latex
+\makecvheader
+```
+
+### Construct the _experiences_ section
+
+To describe your experiences you have first to declare the `experiences` environment
 
 ```latex
 % Begin a new experiences environment to use experience and consultantexperience macro
