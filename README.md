@@ -21,6 +21,25 @@ You can edit online **Awesome Source Latex CV** on [Overleaf](https://www.overle
 
 ## How to use **Awesome Source CV** latex class
 
+### Use the **Awesome Source CV** options
+
+When declaring the `\documentclass` you can use some option(s) to customize your CV rendering.
+
+```latex
+% Used with no option, the template will use the 'traditional' 
+% header formatting your system fonts and the default color scheme
+\documentclass{awesome-source-cv}
+
+% Used with localFont option the template will use the 'traditional' 
+% header formatting, fonts included in the fonts directory and the default color scheme
+\documentclass[localFont]{awesome-source-cv}
+
+% Used with localFont option, the template will use the 'alternative' 
+% header formatting, your system fonts and the default color scheme
+\documentclass[alternative]{awesome-source-cv}
+
+```
+
 ### Construct the header
 
 Outside of the `\socialinfo` wrapper you have to define the mandatory parameters `\name` and `\tagline`.
