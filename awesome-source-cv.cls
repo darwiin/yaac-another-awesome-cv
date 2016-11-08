@@ -17,7 +17,7 @@
 %
 % This work consists of the files awesome-source-cv.cls 
 
-\ProvidesClass{awesome-source-cv}[2016/10/23 v1.4 Awesome Source CV Class]
+\ProvidesClass{awesome-source-cv}[2016/11/05 v1.5 Awesome Source CV Class]
 
 \LoadClass[a4paper]{article}
 
@@ -40,6 +40,10 @@
   \def\@local{local}
 }
 
+\DeclareOption{alternative}{
+  \def\@alternative{alternate}
+}
+
 \ProcessOptions
 
 % Dependences
@@ -59,7 +63,7 @@
 \RequirePackage{longtable} 	
 \RequirePackage{etoolbox}
 \RequirePackage{tikz}
-\RequirePackage{pgffor}
+%\RequirePackage{pgffor}
 \RequirePackage[skins]{tcolorbox}
 
 % Define default accent colors
@@ -151,7 +155,7 @@
 
 % Render author's name
 % Usage: \user{<firstanme>}{<lastname>}
-\newcommand\user[2]{\color{accentcolor}{\LARGE #1 \textbf{#2}}\color{Black}}      % Username
+\newcommand\user[2]{\color{accentcolor}{\LARGE #1 \textbf{#2}}\color{Black}}
 
 % Render a text with its symbol
 % Usage; \socialtext{<icon>}{<label>}
@@ -210,10 +214,14 @@
 
 % Render author's tagline
 \newcommand\resumetitle[1]{
-	\par{
-		\bigskip\center{\Large \color{accentcolor}\textsc{#1}\color{Black}}\par
-	}
-	\bigskip
+  \ifundef{\@alternative}{
+	 \par{
+	 	 \bigskip\center{\Large \color{accentcolor}\textsc{#1}\color{Black}}\par
+	 }
+	 \bigskip
+  }{
+    \color{accentcolor}\textsc{\large{#1}}\color{black}
+  }
 }
 
 % Define social entries to print in header
@@ -222,20 +230,39 @@
 % Render CV header
 % Needs \@firstname, \@lastname and \@tagline to be defined
 \newcommand*{\makecvheader}{
-  \ifundef{\@photodiameter}{
-    \begin{minipage}{\linewidth}
-  }{
-    \begin{minipage}{\dimexpr\linewidth-\@photodiameter-2em}
-  }
-  \user{\@firstname}{\@lastname}\\
-  \small{\@socialinfo}
-  \end{minipage}
-  \ifdef{\@photodiameter}{
-    \begin{minipage}{\@photodiameter}
-      \tikz\path[fill overzoom image={\@photo}]circle[radius=0.5\linewidth];
+  \ifundef{\@alternative}{
+    \ifundef{\@photodiameter}{
+      \begin{minipage}{\linewidth}
+    }{
+      \begin{minipage}{\dimexpr\linewidth-\@photodiameter-2em}
+    }
+    \color{accentcolor}\user{\@firstname}{\@lastname}\color{black}\\
+    \small{\@socialinfo}
     \end{minipage}
-  }{}
-  \resumetitle{\@tagline}
+    \ifdef{\@photodiameter}{
+      \begin{minipage}{\@photodiameter}
+        \tikz\path[fill overzoom image={\@photo}]circle[radius=0.5\linewidth];
+      \end{minipage}
+    }{}
+    \resumetitle{\@tagline}
+  }{
+    \ifundef{\@photodiameter}{
+      \begin{minipage}{\linewidth}
+    }{
+      \begin{minipage}{\dimexpr\linewidth-\@photodiameter-2em}
+    }
+    \user{\@firstname}{\@lastname}\\
+    \resumetitle{\@tagline}
+    \smallskip\\
+    \small{\@socialinfo}
+    \end{minipage}
+    \ifdef{\@photodiameter}{
+      \begin{minipage}{\@photodiameter}
+        \tikz\path[fill overzoom image={\@photo}]circle[radius=0.5\linewidth];
+      \end{minipage}
+    }{}
+    \bigskip
+  }
 }
 
 % Resume part title definition
@@ -288,10 +315,10 @@
 %                    }
 %                    {<Technology list>}
 \newcommand\experience[7]{
-  \textsc{#1}    & \textsc{#2, #3, #4}   								\\
+  \textsc{#1}    & \textsc{#2, #3, #4}   								\\*
   \textsc{#5}    & \begin{minipage}[t]{\rightcolumnlength}
   					         #6
-                   \end{minipage}										\\
+                   \end{minipage}										\\*
                  & \footnotesize{\foreach \n in {#7}{\cvtag{\n}}} 	\\
   }
 
@@ -305,11 +332,11 @@
 %                    }
 %                    {<Technology list>}
 \newcommand\consultantexperience[9]{
-  \textsc{#1}    & \textsc{#2, #3, #4}   								\\
-  \textsc{#5}    & \emph{#6} pour #7                       				\\
+  \textsc{#1}    & \textsc{#2, #3, #4}   								\\*
+  \textsc{#5}    & \emph{#6} pour #7                       				\\*
   				       & 	\begin{minipage}[t]{\rightcolumnlength}
   						        #8
-                   	\end{minipage}										\\
+                   	\end{minipage}										\\*
                  & \footnotesize{\foreach \n in {#9}{\cvtag{\n}}} 	\\
   }
 
