@@ -27,15 +27,15 @@ When declaring the `\documentclass` you can use some option(s) to customize your
 
 ```latex
 % Used with no option, the template will use the 'traditional' 
-% header formatting your system fonts and the default color scheme
+% header layout your system fonts and the default color scheme ie. blue
 \documentclass{awesome-source-cv}
 
 % Used with localFont option the template will use the 'traditional' 
-% header formatting, fonts included in the fonts directory and the default color scheme
+% header layout, fonts included in the fonts directory and the default color scheme
 \documentclass[localFont]{awesome-source-cv}
 
 % Used with localFont option, the template will use the 'alternative' 
-% header formatting, your system fonts and the default color scheme
+% header layout, your system fonts and the default color scheme
 \documentclass[alternative]{awesome-source-cv}
 
 ```
@@ -152,6 +152,24 @@ entry must be separated by the **\emptyseparator**
                     {Technology highlights}
 \end{experiences}
 ```
+
+### Construct the _languages_ section
+
+The _languages_ section use the *skills* environment.
+
+```latex
+% Begin a new skills environment and fill it with skill entries
+  \begin{skills}
+
+% Render a skill in the skills environment
+% Usage: \skill{<skill>}{<level>}
+    \skill{Français}{5}
+    \skill{Anglais}{4}
+
+% End the skills environment    
+  \end{skills}
+```
+
 
 ## License
 
