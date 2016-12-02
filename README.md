@@ -3,7 +3,7 @@ Awesome Source CV [![Example](https://img.shields.io/badge/Exemple-pdf-blue.svg)
 
 ## About
 
-**Awesome Source Latex CV** is based on a CV template created by Alessandro Plasmati. The original template use _XeLaTeX_ engine and _[Fontin Sans](http://www.exljbris.com/fontinsans.html)_ font. 
+**Awesome Source Latex CV** was originally based on a CV template created by Alessandro Plasmati. Thi template use _XeLaTeX_ engine and _[Fontin Sans](http://www.exljbris.com/fontinsans.html)_ font. 
 
 More informations about the original Alessandro Plasmati template can be found here :
 
@@ -11,9 +11,9 @@ More informations about the original Alessandro Plasmati template can be found h
    -  [ LaTeX Templates ](http://www.latextemplates.com/template/plasmati-graduate-cv)
    -  [ ShareLatex ](https://www.sharelatex.com/templates/cv-or-resume/professional-cv)
 
-**Personal data** has moved on top of the first page just before the position and _[Fontin Sans](http://www.exljbris.com/fontinsans.html)_ font has been replaced by _[Source Sans Pro Font](https://github.com/adobe-fonts/source-sans-pro)_ from Adobe. _[Font Awesome](http://fontawesome.io/)_ icons are used to highlight important elements.
+**Personal data** has moved on top of the first page just before the position and _[Fontin Sans](http://www.exljbris.com/fontinsans.html)_ font has been replaced by _[Source Sans Pro Font](https://github.com/adobe-fonts/source-sans-pro)_ from Adobe. _[Font Awesome](http://fontawesome.io/)_ icons highlight important elements.
 
-Unlike _Alessandro Plasmati_ CV template, all layout stuff in **Awesome Source Latex CV** has moved in the Latex class file _awesome-source-cv.cls_.
+Unlike _Alessandro Plasmati_ CV template, all layout stuff in **Awesome Source Latex CV** has moved in the Latex class file _awesome-source-cv.cls_ to imptove source code readability.
 
 ## Quick start
 
@@ -23,7 +23,7 @@ You can edit online **Awesome Source Latex CV** on [Overleaf](https://www.overle
 
 ### Use the **Awesome Source CV** options
 
-When declaring the `\documentclass` you can use some option(s) to customize your CV rendering.
+When declaring the `\documentclass` you can use option(s) to customize your CV rendering.
 
 ```latex
 % Used with no option, the template will use the 'traditional' 
@@ -155,14 +155,14 @@ entry must be separated by the **\emptyseparator**
 
 ### Construct the _languages_ section
 
-The _languages_ section use the *skills* environment.
+The _languages_ section use the **skills** environment. 
 
 ```latex
 % Begin a new skills environment and fill it with skill entries
   \begin{skills}
 
 % Render a skill in the skills environment
-% Usage: \skill{<skill>}{<level>}
+% Usage: \skill{<skill>}{<level between 1 and 5>}
     \skill{Français}{5}
     \skill{Anglais}{4}
 
@@ -170,6 +170,21 @@ The _languages_ section use the *skills* environment.
   \end{skills}
 ```
 
+### Construct the _scolarship_ section
+
+The _scolarship_ section ise the **scolarship** environment.
+
+```latex
+  \begin{scholarship}
+
+% Render a scholarshipentry in the scolarship environment
+% Usage: \scholarshipentry{<date>}{<description>}
+    \scholarshipentry{2007}
+          {Master STIC Professionel filière MBDS de l'Université de Nice Sophia Antipolis (Master Informatique spécialité Multimédia, Base de Données et intégration de Systèmes)}
+    \scholarshipentry{2005}
+          {Licence Sciences et Technologies, Mention Informatique, de l'Université de Nouvelle-Calédonie}
+  \end{scholarship}
+```
 
 ## License
 
