@@ -1,7 +1,7 @@
 %% Copyright 2016 Christophe Roger
 %
 % Author: 
-%Christophe Roger
+% Christophe Roger
 %
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3c
@@ -17,9 +17,9 @@
 %
 % This work consists of the files awesome-source-cv.cls 
 
-\ProvidesClass{awesome-source-cv}[2016/10/14 v1.3 Awesome Source CV Class]
+\ProvidesClass{awesome-source-cv}[2016/11/05 v1.5 Awesome Source CV Class]
 
-\LoadClass[11pt,a4paper]{article}
+\LoadClass[a4paper]{article}
 
 \DeclareOption{green}{
   \def\@green{green}
@@ -39,6 +39,11 @@
 \DeclareOption{localFont}{
   \def\@local{local}
 }
+
+\DeclareOption{alternative}{
+  \def\@alternative{alternate}
+}
+
 \ProcessOptions
 
 % Dependences
@@ -58,7 +63,8 @@
 \RequirePackage{longtable} 	
 \RequirePackage{etoolbox}
 \RequirePackage{tikz}
-\RequirePackage{pgffor}
+%\RequirePackage{pgffor}
+\RequirePackage[skins]{tcolorbox}
 
 % Define default accent colors
 \definecolor{basecolor}{HTML}{000066}       %BLUE
@@ -123,9 +129,6 @@
 }
 
 %New length definition
-\newlength{\datebox}
-\settowidth{\datebox}{Décembre 2009}
-
 \newlength{\rightcolumnlength}
 \setlength{\rightcolumnlength}{14.8cm}
 
@@ -144,21 +147,15 @@
 \newcommand\link[2]{\color{linkcolor}\href{#1}{#2}\color{Black} }
 \newcommand\important[1]{\textbf #1}
 
-% Create tag
+% Create a tag
+% Usage: \cvtag{<tag label>}
 \newcommand{\cvtag}[1]{%
   \tikz[baseline]\node[anchor=base,draw=darkGrey!70,rounded corners=0.5ex,inner xsep=1ex,inner ysep =0.55ex,text height=1.3ex,text depth=.25ex]{#1};
 }
 
-% Create skill level
-%\newcommand{\cvskill}[2]{%
-%\textcolor{accentcolor}{\textbf{#1}}\hfill
-%\foreach \x in {1,...,5}{%
-%  \space{\color{accentcolor} \ifnumgreater{\x}{#2}{\faCircleThin}{\faCircle}}}\par%
-%}
-
 % Render author's name
 % Usage: \user{<firstanme>}{<lastname>}
-\newcommand\user[2]{\color{accentcolor}{\LARGE #1 \textbf{#2}}\color{Black}}      % Username
+\newcommand\user[2]{\color{accentcolor}{\LARGE #1 \textbf{#2}}\color{Black}}
 
 % Render a text with its symbol
 % Usage; \socialtext{<icon>}{<label>}
@@ -182,6 +179,10 @@
 % Define author's tagline
 % Usage: \tagline{<tag line>}
 \newcommand*{\tagline}[1]{\def\@tagline{#1}}
+
+% Define author's photo
+% Usage \photo{<diameter>}{<photo>}
+\newcommand{\photo}[2]{\def\@photo{#2}\def\@photodiameter{#1}}
 
 % Render author's address
 % Usage: \address{<address>}
@@ -211,11 +212,16 @@
 % Usage: \smartphone{<mobile phone number>}
 \newcommand*\smartphone[1]{\socialtext{\mobileSymbol}{#1}}    
 
+% Render author's tagline
 \newcommand\resumetitle[1]{
-	\par{
-		\bigskip\center{\Large \color{accentcolor}\textsc{#1}\color{Black}}\par
-	}
-	\bigskip
+  \ifundef{\@alternative}{
+	 \par{
+	 	 \bigskip\center{\Large \color{accentcolor}\textsc{#1}\color{Black}}\par
+	 }
+	 \bigskip
+  }{
+    \color{accentcolor}\textsc{\large{#1}}\color{black}
+  }
 }
 
 % Define social entries to print in header
@@ -223,25 +229,58 @@
 
 % Render CV header
 % Needs \@firstname, \@lastname and \@tagline to be defined
-\newcommand{\makecvheader}{
-  \user{\@firstname}{\@lastname}\\
-  \small{\@socialinfo}
-  \resumetitle{\@tagline}
+\newcommand*{\makecvheader}{
+  \ifundef{\@alternative}{
+    \ifundef{\@photodiameter}{
+      \begin{minipage}{\linewidth}
+    }{
+      \begin{minipage}{\dimexpr\linewidth-\@photodiameter-2em}
+    }
+    \color{accentcolor}\user{\@firstname}{\@lastname}\color{black}\\
+    \small{\@socialinfo}
+    \end{minipage}
+    \ifdef{\@photodiameter}{
+      \begin{minipage}{\@photodiameter}
+        \tikz\path[fill overzoom image={\@photo}]circle[radius=0.5\linewidth];
+      \end{minipage}
+    }{}
+    \resumetitle{\@tagline}
+  }{
+    \ifundef{\@photodiameter}{
+      \begin{minipage}{\linewidth}
+    }{
+      \begin{minipage}{\dimexpr\linewidth-\@photodiameter-2em}
+    }
+    \user{\@firstname}{\@lastname}\\
+    \resumetitle{\@tagline}
+    \smallskip\\
+    \small{\@socialinfo}
+    \end{minipage}
+    \ifdef{\@photodiameter}{
+      \begin{minipage}{\@photodiameter}
+        \tikz\path[fill overzoom image={\@photo}]circle[radius=0.5\linewidth];
+      \end{minipage}
+    }{}
+    \bigskip
+  }
 }
 
 % Resume part title definition
 \newcommand\sectionTitle[2]{\section{\texorpdfstring{\color{accentcolor}#2\enspace #1}{#1}}}
 
-\newcolumntype{D}{>{\raggedleft}p{\leftcolumn}}
+% Define a new column type for the scholarship environment
+\newcolumntype{Y}{>{\raggedleft}p{\leftcolumn}}
 
-% Define the 'scolarship' environment
-\newenvironment{scolarship}{%
-  \begin{tabular}{D p{\rightcolumnlength}}
+% Define the 'scholarship' environment
+\newenvironment{scholarship}{%
+  \begin{tabular}{Y p{\rightcolumnlength}}
 }{%
   \end{tabular}
 }
 
-\newcommand\scolarshipentry[2]{
+% Render a scholarshipentry in the scolarship environment
+% Usage: \scholarshipentry{<date>}{<description>}
+\newcommand\scholarshipentry[2]{
   #1    &  #2 \\
 }
 
@@ -253,15 +292,16 @@
 }
 
 % Render a skill in the skills environment
-% Usage: 
-% \skill{<skill>}{<level>}
+% Usage: \skill{<skill>}{<level>}
 \newcommand\skill[2]{
   \textsc{#1}    & \foreach \x in {1,...,5}{{\color{accentcolor!80} \ifnumgreater{\x}{#2}{\faCircleO}{\faCircle}}\enspace } \\
 }
 
+\newcolumntype{E}{>{\raggedright\arraybackslash}p{\rightcolumnlength}}
+
 % Define the 'experiences' environment
 \newenvironment{experiences}{%
-  \begin{longtable}{R{\leftcolumn}|p{\rightcolumnlength}}
+  \begin{longtable}{R{\leftcolumn}|E}
 }{%
   \end{longtable}
 }
@@ -275,10 +315,10 @@
 %                    }
 %                    {<Technology list>}
 \newcommand\experience[7]{
-  \textsc{#1}    & \textsc{#2, #3, #4}   								\\
+  \textsc{#1}    & \textsc{#2, #3, #4}   								\\*
   \textsc{#5}    & \begin{minipage}[t]{\rightcolumnlength}
   					         #6
-                   \end{minipage}										\\
+                   \end{minipage}										\\*
                  & \footnotesize{\foreach \n in {#7}{\cvtag{\n}}} 	\\
   }
 
@@ -292,12 +332,12 @@
 %                    }
 %                    {<Technology list>}
 \newcommand\consultantexperience[9]{
-  \textsc{#1}    & \textsc{#2, #3, #4}   								\\
-  \textsc{#5}    & \emph{#6} pour #7                       				\\
+  \textsc{#1}    & \textsc{#2, #3, #4}   								\\*
+  \textsc{#5}    & \emph{#6} pour #7                       				\\*
   				       & 	\begin{minipage}[t]{\rightcolumnlength}
   						        #8
-                   	\end{minipage}										\\
-                 & \footnotesize{\foreach \n in {#9}{\cvtag{\n}} } 	\\
+                   	\end{minipage}										\\*
+                 & \footnotesize{\foreach \n in {#9}{\cvtag{\n}}} 	\\
   }
 
 \newcommand\emptySeparator{\multicolumn{2}{c}{}\\}

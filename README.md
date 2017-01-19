@@ -1,25 +1,48 @@
-Awesome Source CV [![Example](https://img.shields.io/badge/Exemple-pdf-blue.svg)](https://raw.githubusercontent.com/posquit0/Awesome-CV/master/examples/resume.pdf)
+Awesome Source CV [![Example](https://img.shields.io/badge/Exemple-pdf-blue.svg)](https://github.com/darwiin/awesome-neue-latex-cv/releases/download/1.4-github/cv.pdf)
 =================
 
 ## About
 
-**Awesome Source Latex CV** is based on a CV template created by Alessandro Plasmati. The original template use _XeLaTeX_ engine and _[Fontin Sans](http://www.exljbris.com/fontinsans.html)_ font. 
+**Awesome Source Latex CV** was originally based on a CV template created by Alessandro Plasmati. Thi template use _XeLaTeX_ engine and _[Fontin Sans](http://www.exljbris.com/fontinsans.html)_ font. 
 
-Original Alessandro Plasmati template and more informations can be found here :
+More informations about the original Alessandro Plasmati template can be found here :
 
    -  [ Scribd ](http://fr.scribd.com/doc/16335667/Writing-your-Professional-CV-with-LaTeX)
    -  [ LaTeX Templates ](http://www.latextemplates.com/template/plasmati-graduate-cv)
    -  [ ShareLatex ](https://www.sharelatex.com/templates/cv-or-resume/professional-cv)
 
-**Personal data** has moved on top of the first page just before the position and _[Fontin Sans](http://www.exljbris.com/fontinsans.html)_ font has been replaced by _[Source Sans Pro Font](https://github.com/adobe-fonts/source-sans-pro)_ from Adobe. _[Font Awesome](http://fontawesome.io/)_ icons are used to highlight important elements.
+**Personal data** has moved on top of the first page just before the position and _[Fontin Sans](http://www.exljbris.com/fontinsans.html)_ font has been replaced by _[Source Sans Pro Font](https://github.com/adobe-fonts/source-sans-pro)_ from Adobe. _[Font Awesome](http://fontawesome.io/)_ icons highlight important elements.
 
-Unlike _Alessandro Plasmati_ CV template, all layout stuff in **Awesome Source Latex CV** has moved in the Latex class file _awesome-source-cv.cls_.
+Unlike _Alessandro Plasmati_ CV template, all layout stuff in **Awesome Source Latex CV** has moved in the Latex class file _awesome-source-cv.cls_ to imptove source code readability.
 
 ## Quick start
 
-You can edit online **Awesome Source Latex CV** on [Overleaf](https://www.overleaf.com/latex/templates/awesome-source-cv/wrdjtkkytqcw). Feel free to use my [invite link](https://www.overleaf.com/signup?ref=54c221604cd6) if you want to create your account.
+You can edit online **Awesome Source Latex CV** on [Overleaf](https://www.overleaf.com/latex/templates/awesome-source-cv/wrdjtkkytqcw). Feel free to use my [referal link](https://www.overleaf.com/signup?ref=54c221604cd6) if you want to create your account.
 
 ## How to use **Awesome Source CV** latex class
+
+### Use the **Awesome Source CV** options
+
+When declaring the `\documentclass` you can use option(s) to customize your CV rendering.
+
+```latex
+% Used with no option, the template will use the 'traditional' 
+% header layout your system fonts and the default color scheme ie. blue
+\documentclass{awesome-source-cv}
+
+% Used with localFont option the template will use the 'traditional' 
+% header layout, fonts included in the fonts directory and the default color scheme
+\documentclass[localFont]{awesome-source-cv}
+
+% Used with localFont option, the template will use the 'alternative' 
+% header layout, your system fonts and the default color scheme
+\documentclass[alternative]{awesome-source-cv}
+
+```
+
+### Construct the header
+
+Outside of the `\socialinfo` wrapper you have to define the mandatory parameters `\name` and `\tagline`.
 
 ```latex
 % Define author's name
@@ -27,11 +50,37 @@ You can edit online **Awesome Source Latex CV** on [Overleaf](https://www.overle
 % Mandatory
 \name{Christophe}{ROGER}
 
+% Define author's photo (optional)
+% Usage \photo{<diameter>}{<photo>}
+\photo{2.5cm}{darwiin}
+
 % Define author's tagline
 % Usage: \tagline{<tag line>} 
 % Mandatory
 \tagline{Chef de projet IT}
 ```
+
+Most social network have their command to render a clickable link or a simple text entry.
+
+```latex
+% Render author's linked-in (optional)
+% Usage: \linkedin{<linked-in-nick>}
+\linkedin{christopheroger}
+
+% Render author's viadeo(optional)
+% Usage: \viadeo{<viadeo-nick>}
+\viadeo{christopheroger}
+
+% Render author's github (optional)
+% Usage: \github{<github-nick>}
+\github{darwiin}
+
+% Render author's email (optional)
+% Usage: \email{<email adress>}
+\email{christophe.roger@mail.com}
+```
+
+Put these command in the `\socialinfo` wrapper. Feel free to add `\\` when you want to force a new line.
 
 ```latex
 \socialinfo{
@@ -45,7 +94,15 @@ You can edit online **Awesome Source Latex CV** on [Overleaf](https://www.overle
 }
 ```
 
-To describe your experiences you have first to declare the **experiences** environment
+Use the `\makecvheader`command to generate the header.
+
+```latex
+\makecvheader
+```
+
+### Construct the _experiences_ section
+
+To describe your experiences you have first to declare the `experiences` environment
 
 ```latex
 % Begin a new experiences environment to use experience and consultantexperience macro
@@ -94,6 +151,39 @@ entry must be separated by the **\emptyseparator**
                     }
                     {Technology highlights}
 \end{experiences}
+```
+
+### Construct the _languages_ section
+
+The _languages_ section use the **skills** environment. 
+
+```latex
+% Begin a new skills environment and fill it with skill entries
+  \begin{skills}
+
+% Render a skill in the skills environment
+% Usage: \skill{<skill>}{<level between 1 and 5>}
+    \skill{Français}{5}
+    \skill{Anglais}{4}
+
+% End the skills environment    
+  \end{skills}
+```
+
+### Construct the _scolarship_ section
+
+The _scolarship_ section ise the **scolarship** environment.
+
+```latex
+  \begin{scholarship}
+
+% Render a scholarshipentry in the scolarship environment
+% Usage: \scholarshipentry{<date>}{<description>}
+    \scholarshipentry{2007}
+          {Master STIC Professionel filière MBDS de l'Université de Nice Sophia Antipolis (Master Informatique spécialité Multimédia, Base de Données et intégration de Systèmes)}
+    \scholarshipentry{2005}
+          {Licence Sciences et Technologies, Mention Informatique, de l'Université de Nouvelle-Calédonie}
+  \end{scholarship}
 ```
 
 ## License
