@@ -49,9 +49,9 @@
 % Dependences
 %A Few Useful Packages
 \RequirePackage[frenchb]{babel}
-\RequirePackage[T1]{fontenc}
-\RequirePackage{fontspec} 					        % for loading fonts
-\RequirePackage{xunicode,xltxtra,url,parskip} 	    % other packages for formatting
+\RequirePackage[utf8]{luainputenc}
+\RequirePackage{fontspec} 					                 % for loading fonts
+\RequirePackage{url,parskip} 	    % other packages for formatting
 \RequirePackage[usenames,dvipsnames]{xcolor}
 \RequirePackage{fullpage}
 \RequirePackage[margin=1.5cm]{geometry}
@@ -63,9 +63,10 @@
 \RequirePackage{longtable} 	
 \RequirePackage{etoolbox}
 \RequirePackage{tikz}
-%\RequirePackage{pgffor}
 \RequirePackage[skins]{tcolorbox}
 
+
+\DeclareUnicodeCharacter{00E9}{\'{e}}
 % Define default accent colors
 \definecolor{basecolor}{HTML}{000066}       %BLUE
 
@@ -92,7 +93,7 @@
 \hypersetup{breaklinks}
 
 \pagestyle{empty}                         % non-numbered pages
-\font\fb=''[cmr10]''                      % for use with \LaTeX command
+%\font\fb=''[cmr10]''                      % for use with \LaTeX command
 
 % Setup CV sections
 \titleformat{\section}{\Large\raggedright}{}{0em}{}[\titlerule]
