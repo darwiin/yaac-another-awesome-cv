@@ -1,7 +1,7 @@
 %% Copyright 2016 Christophe Roger
 %
 % Author: 
-% Christophe Roger
+% Christophe Roger (Darwiin)
 %
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3c
@@ -17,7 +17,7 @@
 %
 % This work consists of the files awesome-source-cv.cls 
 
-\ProvidesClass{awesome-source-cv}[2016/11/05 v1.5 Awesome Source CV Class]
+\ProvidesClass{awesome-source-cv}[2016/11/05 v1.6 Awesome Source CV Class]
 
 \LoadClass[a4paper]{article}
 
