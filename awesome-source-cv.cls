@@ -17,7 +17,7 @@
 %
 % This work consists of the files awesome-source-cv.cls 
 
-\ProvidesClass{awesome-source-cv}[2016/11/05 v1.6 Awesome Source CV Class]
+\ProvidesClass{awesome-source-cv}[2016/11/05 v1.6.1 Awesome Source CV Class]
 
 \LoadClass[a4paper]{article}
 
