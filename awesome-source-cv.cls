@@ -17,7 +17,7 @@
 %
 % This work consists of the files awesome-source-cv.cls 
 
-\ProvidesClass{awesome-source-cv}[2016/11/05 v1.6.1 Awesome Source CV Class]
+\ProvidesClass{awesome-source-cv}[2017/05/2017  v1.6.2 Awesome Source CV Class]
 
 \LoadClass[a4paper]{article}
 
@@ -342,3 +342,13 @@
   }
 
 \newcommand\emptySeparator{\multicolumn{2}{c}{}\\}
+
+\newcommand*\twocolumnsection[2]{
+  \begin{minipage}[t]{\dimexpr(\linewidth/2) - 3em}
+    #1
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{\dimexpr(\linewidth/2) - 3em}
+    #2
+  \end{minipage}
+  }
