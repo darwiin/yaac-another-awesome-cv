@@ -1,0 +1,17 @@
+sudo: required
+dist: trusty
+before_install:
+- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends latexmk
+  texlive-fonts-extra texlive-fonts-recommended texlive-latex-base texlive-latex-extra
+  texlive-latex-recommended
+script:
+- latexmk -cd -f -lualatex -interaction=nonstopmode -synctex=1 cv.tex
+deploy:
+  provider: releases
+  api_key:
+    secure: <key from travis CLI script>
+  file:
+  - resume.pdf
+  skip_cleanup: true
+  on:
+    tags: true
