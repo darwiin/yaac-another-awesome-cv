@@ -1,7 +1,7 @@
 sudo: required
 dist: trusty
 before_install:
-- sudo add-apt-repository ppa:jonathonf/texlive
+- sudo add-apt-repository ppa:jonathonf/texlive -y
 - sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends latexmk
   texlive-fonts-extra texlive-fonts-recommended texlive-latex-base texlive-latex-extra
   texlive-latex-recommended texlive-luatex texlive-xetex latex-xcolor texlive-pictures pgf texlive-lang-french fonts-font-awesome xzdec
