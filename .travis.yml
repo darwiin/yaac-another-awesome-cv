@@ -5,7 +5,7 @@ before_install:
   texlive-fonts-extra texlive-fonts-recommended texlive-latex-base texlive-latex-extra
   texlive-latex-recommended
 script:
-- latexmk -cd -f -lualatex -interaction=nonstopmode -synctex=1 cv.tex
+- latexmk -cd -f -pdflatex=lualatex -interaction=nonstopmode -synctex=1 -pdf cv.tex
 deploy:
   provider: releases
   api_key:
