@@ -3,7 +3,7 @@ dist: trusty
 before_install:
 - sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends latexmk
   texlive-fonts-extra texlive-fonts-recommended texlive-latex-base texlive-latex-extra
-  texlive-latex-recommended texlive-luatex
+  texlive-latex-recommended texlive-luatex texlive-xetex
 script:
 - latexmk -cd -f -pdflatex=lualatex -interaction=nonstopmode -synctex=1 -pdf cv.tex
 deploy:
