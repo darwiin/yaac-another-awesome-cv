@@ -2,7 +2,7 @@ sudo: required
 dist: trusty
 before_install:
 - sudo add-apt-repository ppa:jonathonf/texlive -y
-- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-full fonts-font-awesome
+- sudo apt-get -qq update && sudo apt-get install -y texlive-full fonts-font-awesome
 script:
 - latexmk -cd -f -pdflatex=lualatex -interaction=nonstopmode -synctex=1 -pdf cv.tex
 deploy:
