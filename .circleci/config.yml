@@ -14,7 +14,7 @@ jobs:
       - checkout
       - run:
           name: build
-          command: cd example && latexmk -cd -f -lualatex -interaction=nonstopmode -synctex=1 example/cv.tex
+          command: cd example && latexmk -cd -f -pdflatex=lualatex -interaction=nonstopmode -synctex=1 -pdf example/cv.tex
       - run:
           name: Print the Current Time
           command: date
