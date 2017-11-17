@@ -17,7 +17,7 @@
 %
 % This work consists of the files awesome-source-cv.cls 
 
-\ProvidesClass{awesome-source-cv}[2017/05/2017  v1.6.2 Awesome Source CV Class]
+\ProvidesClass{yaac}[2017/11/17  v1.7.0 'YAAC: Another Awesome CV' Class]
 
 \LoadClass[a4paper]{article}
 
