@@ -9,12 +9,12 @@ jobs:
           command: apt-get -qq update; apt-get -y install git
       - run:
           name: Latex installation
-          command: apt-get -qq update && apt-get install -y --no-install-recommends latexmk texlive-fonts-extra texlive-fonts-recommended texlive-latex-base texlive-latex-extra texlive-latex-recommended texlive-luatex texlive-xetex latex-xcolor texlive-pictures pgf texlive-lang-french fonts-font-awesome
+          command: apt-get -qq update && apt-get install -y --no-install-recommends latexmk texlive-fonts-extra texlive-fonts-recommended texlive-latex-base texlive-latex-extra texlive-latex-recommended texlive-luatex texlive-xetex texlive-pictures texlive-lang-french fonts-font-awesome
       - add_ssh_keys
       - checkout
       - run:
           name: build
-          command: latexmk -cd -f -lualatex -interaction=nonstopmode -synctex=1 cv.tex
+          command: latexmk -cd -f -lualatex -interaction=nonstopmode -synctex=1 example/cv.tex
       - run:
           name: Print the Current Time
           command: date
