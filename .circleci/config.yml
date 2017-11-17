@@ -4,5 +4,12 @@ jobs:
     docker:
       - image: ubuntu
     steps:
+      - add_ssh_keys
+      - run
       - checkout
-
+      - run:
+          name: build
+          command: latexmk -cd -f -lualatex -interaction=nonstopmode -synctex=1 cv.tex
+      - run:
+          name: Print the Current Time
+          command: date
