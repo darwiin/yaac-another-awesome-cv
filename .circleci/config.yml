@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: ubuntu
     steps:
-      - add_ssh_keys
+      - add_ssh_keys:
       - run
       - checkout
       - run:
