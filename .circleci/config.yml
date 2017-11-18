@@ -15,6 +15,5 @@ jobs:
       - run:
           name: Build th PDF
           command: cd example && latexmk -cd -f -lualatex -interaction=nonstopmode -pdf cv.tex
-      - run:
-          name: Save built PDF
-          command: cd && cp project/example/cv.pdf $CIRCLE_ARTIFACTS/cv.pdf
+      - store_artifacts:
+          path: ~/project/example/cv.pdf
