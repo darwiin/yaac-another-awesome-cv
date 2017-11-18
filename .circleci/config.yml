@@ -13,8 +13,8 @@ jobs:
       - add_ssh_keys
       - checkout
       - run:
-          name: build
+          name: Build th PDF
           command: cd example && latexmk -cd -f -lualatex -interaction=nonstopmode -pdf cv.tex
       - run:
-          name: Print the Current Time
-          command: date
+          name: Save built PDF
+          command: cd && cp project/example/cv.pdf $CIRCLE_ARTIFACTS/cv.pdf
