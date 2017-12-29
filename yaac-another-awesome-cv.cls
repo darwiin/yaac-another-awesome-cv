@@ -17,7 +17,7 @@
 %
 % This work consists of the files awesome-source-cv.cls 
 
-\ProvidesClass{yaac-another-awesome-cv}[2017/11/17  v1.7.0 'YAAC: Another Awesome CV' Class]
+\ProvidesClass{yaac-another-awesome-cv}[2017/12/26  v1.8.0 'YAAC: Another Awesome CV' Class]
 
 \LoadClass[a4paper]{article}
 
@@ -117,16 +117,14 @@
 {
   %\setmainfont[BoldFont = Helvetica Neue, ItalicFont=Helvetica Neue Thin Italic ,SmallCapsFont = Helvetica Neue Light]{Helvetica Neue Thin}
   \setmainfont{Source Sans Pro Light}[
-    BoldFont = Source Sans Pro Semibold, 
-    ItalicFont= Source Sans Pro Light Italic,
-    SmallCapsFont = Source Sans Pro]
+    BoldFont = SourceSansPro-Regular, 
+    ItalicFont= Source Sans Pro Light Italic]
 }
 {
   \setmainfont{SourceSansPro-Light}[
     Path = fonts/, 
-    BoldFont = SourceSansPro-Semibold, 
-    ItalicFont = SourceSansPro-LightIt, 
-    SmallCapsFont = SourceSansPro-Regular]
+    BoldFont = SourceSansPro-Regular, 
+    ItalicFont = SourceSansPro-LightIt]
 }
 
 %New length definition
@@ -156,7 +154,7 @@
 
 % Render author's name
 % Usage: \user{<firstanme>}{<lastname>}
-\newcommand\user[2]{\color{accentcolor}{\LARGE #1 \textbf{#2}}\color{Black}}
+\newcommand\user[2]{\color{accentcolor}{\LARGE #1 \textsc{\textbf{#2}}}\color{Black}}
 
 % Render a text with its symbol
 % Usage; \socialtext{<icon>}{<label>}
@@ -217,11 +215,11 @@
 \newcommand\resumetitle[1]{
   \ifundef{\@alternative}{
 	 \par{
-	 	 \bigskip\center{\Large \color{accentcolor}\textsc{#1}\color{Black}}\par
+	 	 \bigskip\center{\Large \color{accentcolor}\textbf{#1}\color{Black}}\par
 	 }
 	 \bigskip
   }{
-    \color{accentcolor}\textsc{\large{#1}}\color{black}
+    \color{accentcolor}\textbf{\large{#1}}\color{black}
   }
 }
 
@@ -267,7 +265,22 @@
 }
 
 % Resume part title definition
-\newcommand\sectionTitle[2]{\section{\texorpdfstring{\color{accentcolor}#2\enspace #1}{#1}}}
+\newcommand\sectionTitle[2]{\section{\texorpdfstring{\color{accentcolor}#2\enspace \textsc{#1}}{#1}}}
+
+% Define the 'keywords' environment
+\newenvironment{keywords}{%
+  \renewcommand{\arraystretch}{1.1}
+
+  \begin{tabular}{>{}r>{}p{13cm}} 
+}{%
+  \end{tabular}
+}
+
+% Render a scholarshipentry in the scolarship environment
+% Usage: \scholarshipentry{<date>}{<description>}
+\newcommand\keywordsentry[2]{
+  \textbf{#1} &   #2\\ 
+}
 
 % Define a new column type for the scholarship environment
 \newcolumntype{Y}{>{\raggedleft}p{\leftcolumn}}
@@ -295,7 +308,7 @@
 % Render a skill in the skills environment
 % Usage: \skill{<skill>}{<level>}
 \newcommand\skill[2]{
-  \textsc{#1}    & \foreach \x in {1,...,5}{{\color{accentcolor!80} \ifnumgreater{\x}{#2}{\faCircleO}{\faCircle}}\enspace } \\
+  \textbf{#1}    & \foreach \x in {1,...,5}{{\color{accentcolor!80} \ifnumgreater{\x}{#2}{\faCircleThin}{\faCircle}}\enspace } \\
 }
 
 \newcolumntype{E}{>{\raggedright\arraybackslash}p{\rightcolumnlength}}
@@ -316,8 +329,8 @@
 %                    }
 %                    {<Technology list>}
 \newcommand\experience[7]{
-  \textsc{#1}    & \textsc{#2, #3, #4}   								\\*
-  \textsc{#5}    & \begin{minipage}[t]{\rightcolumnlength}
+  \textbf{#1}    & \textbf{#2, \textsc{#3}, #4}   								\\*
+  \textbf{#5}    & \begin{minipage}[t]{\rightcolumnlength}
   					         #6
                    \end{minipage}										\\*
                  & \footnotesize{\foreach \n in {#7}{\cvtag{\n}}} 	\\
@@ -333,8 +346,8 @@
 %                    }
 %                    {<Technology list>}
 \newcommand\consultantexperience[9]{
-  \textsc{#1}    & \textsc{#2, #3, #4}   								\\*
-  \textsc{#5}    & \emph{#6} pour #7                       				\\*
+  \textbf{#1}    & \textbf{#2, \textsc{#3}, #4}   								\\*
+  \textbf{#5}    & \emph{#6} pour \textsc{#7}                       				\\*
   				       & 	\begin{minipage}[t]{\rightcolumnlength}
   						        #8
                    	\end{minipage}										\\*
@@ -352,3 +365,23 @@
     #2
   \end{minipage}
   }
+
+% Define the 'referencees' environment
+\newenvironment{referees}{%
+}{%
+  \hfill
+  \bigskip
+}
+
+\newcommand*\referee[5]{
+  \hspace{1em}
+  \begin{minipage}[t]{\dimexpr(\linewidth/3) - 3em}
+    \begin{tabular}{>{}l >{}l}
+      \multicolumn{2}{l}{\textbf{#1}}\\
+      \multicolumn{2}{l}{\emph{#2}, \textsc{#3}}\\
+      \quad \mailSymbol & \href{mailto:#4}{#4} \\  
+      \quad \faPhone & #5 \\
+    \end{tabular}
+  \end{minipage}%
+}
+

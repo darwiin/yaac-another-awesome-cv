@@ -1,4 +1,4 @@
-YAAC: Another Awesome CV [![CircleCI](https://circleci.com/gh/darwiin/yaac-another-awesome-cv.svg?style=svg)](https://circleci.com/gh/darwiin/yaac-another-awesome-cv) [![Example](https://img.shields.io/badge/Exemple-pdf-blue.svg)](https://github.com/darwiin/yaac-another-awesome-cv/releases/download/v1.7.0/cv.pdf)
+YAAC: Another Awesome CV [![CircleCI](https://circleci.com/gh/darwiin/yaac-another-awesome-cv.svg?style=svg)](https://circleci.com/gh/darwiin/yaac-another-awesome-cv) [![Example](https://img.shields.io/badge/Exemple-pdf-blue.svg)](https://github.com/darwiin/yaac-another-awesome-cv/releases/download/v1.8.0/cv.pdf)
 =================
 
 ## Quick start
@@ -100,6 +100,19 @@ Use the `\makecvheader`command to generate the header.
 \makecvheader
 ```
 
+### Construct the _comptences_ or _skills_ section
+
+To list your awesome skills as keyword lists you first have to declare the `keywords` environment and then fill it with a list of keywordsentry
+
+```latex
+% Begin a new keywords environment to show us your awesome keywords
+  \begin{keywords}
+    
+    % Here's go your keyword lists group by categories
+    \keywordsentry{Frameworks}{Spring, Spring Boot, \textbf{Ionic 3}, Angular 2, Angular 4, ZK, JBoss RichFaces}
+  \end{keywords}
+```
+
 ### Construct the _experiences_ section
 
 To describe your experiences you have first to declare the `experiences` environment
@@ -172,7 +185,7 @@ The _languages_ section use the **skills** environment.
 
 ### Construct the _scolarship_ section
 
-The _scolarship_ section ise the **scolarship** environment.
+The _scolarship_ section use the **scolarship** environment.
 
 ```latex
   \begin{scholarship}
@@ -185,6 +198,41 @@ The _scolarship_ section ise the **scolarship** environment.
           {Licence Sciences et Technologies, Mention Informatique, de l'Université de Nouvelle-Calédonie}
   \end{scholarship}
 ```
+
+### Construct the _references_ section
+
+The _references_ section use the **references** environment.
+
+```latex
+  \begin{references}
+
+    % Here's go your references
+
+  \end{references}
+```
+
+Then you can list your references as follow:
+
+```latex
+  \begin{referees}
+    \referee
+      {John Snow}
+      {Lord Commander of the Night Watch}
+      {Night Watch}
+      {john.snow@nightwatch.org}
+      {+687 987 654}
+
+    \referee
+      {Géry Loutre}
+      {Architecte logiciel}
+      {Cafat}
+      {ref1@cafat.nc}
+      {+687 987 654}
+
+  \begin{referees}
+```
+
+Note that this template 
 
 ## License
 
