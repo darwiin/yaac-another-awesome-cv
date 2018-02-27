@@ -14,6 +14,6 @@ jobs:
       - checkout
       - run:
           name: Build th PDF
-          command: cd example && latexmk -cd -f -lualatex -interaction=nonstopmode -pdf cv.tex
+          command: cd default && latexmk -cd -f -lualatex -interaction=nonstopmode -pdf cv.tex
       - store_artifacts:
-          path: ~/project/example/cv.pdf
+          path: ~/project/default/cv.pdf

@@ -1,0 +1,1 @@
+../yaac-another-awesome-cv.cls
