@@ -17,9 +17,11 @@
 %
 % This work consists of the files awesome-source-cv.cls 
 
-\ProvidesClass{yaac-another-awesome-cv}[2017/12/26  v1.8.0 'YAAC: Another Awesome CV' Class]
+\ProvidesClass{yaac-another-awesome-cv}[2018/03/26  v1.9.0 'YAAC: Another Awesome CV' Class]
 
 \LoadClass[a4paper]{article}
+
+\newif\if@showLinks   \@showLinksfalse
 
 \DeclareOption{green}{
   \def\@green{green}
@@ -36,6 +38,10 @@
   \def\@orange{orange}
 }
 
+\DeclareOption{monochrome}{
+  \def\@monochrome{monochrome}
+}
+
 \DeclareOption{localFont}{
   \def\@local{local}
 }
@@ -43,6 +49,8 @@
 \DeclareOption{alternative}{
   \def\@alternative{alternate}
 }
+
+\DeclareOption{showLinks}{ \@showLinkstrue}
 
 \ProcessOptions
 
@@ -73,7 +81,10 @@
 \ifundef{\@green} {
   \ifundef{\@red} {
     \ifundef{\@indigo}{
-      \ifundef{\@orange} {}
+      \ifundef{\@orange} {
+        \ifundef{\@monochrome} {}
+        { \definecolor{basecolor}{HTML}{000000}}
+      }
       { \definecolor{basecolor}{HTML}{e68a00} }
     }
     { \definecolor{basecolor}{rgb}{0.2, 0.07, 0.48} }
@@ -90,7 +101,18 @@
 
 % Setup hyperref package, and colours for links
 %\definecolor{linkcolour}{rgb}{0,0.2,0.6}
-\hypersetup{breaklinks}
+
+\if@showLinks
+  \hypersetup{%
+    breaklinks
+  }%
+\else
+  \hypersetup{%
+    pdfborder = {0 0 0},
+    breaklinks
+  }%
+\fi
+
 
 \pagestyle{empty}                         % non-numbered pages
 %\font\fb=''[cmr10]''                      % for use with \LaTeX command
