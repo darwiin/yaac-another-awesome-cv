@@ -22,7 +22,7 @@ More informations about the original Alessandro Plasmati template can be found h
 ## Preview
 | Page. 1 | Page. 2 |
 |:---:|:---:|
-| ![Résumé](example/preview/cv1.jpg) | ![Résumé](example/preview/cv2.jpg) |
+| ![Résumé](example/preview/cv1.jpeg) | ![Résumé](example/preview/cv2.jpeg) |
 
 ## How to use **YAAC: Another Awesome CV** latex class
 
