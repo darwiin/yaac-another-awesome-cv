@@ -19,6 +19,11 @@ More informations about the original Alessandro Plasmati template can be found h
    -  [ LaTeX Templates ](http://www.latextemplates.com/template/plasmati-graduate-cv)
    -  [ ShareLatex ](https://www.sharelatex.com/templates/cv-or-resume/professional-cv)
 
+## Preview
+| Page. 1 | Page. 2 |
+|:---:|:---:|
+| ![Résumé](example/preview/cv1.jpg) | ![Résumé](example/preview/cv2.jpg) |
+
 ## How to use **YAAC: Another Awesome CV** latex class
 
 ### Use the **YAAC: Another Awesome CV** options
@@ -232,7 +237,6 @@ Then you can list your references as follow:
   \begin{referees}
 ```
 
-Note that this template 
 
 ## License
 

@@ -17,7 +17,7 @@
 %
 % This work consists of the files awesome-source-cv.cls 
 
-\ProvidesClass{yaac-another-awesome-cv}[2018/03/26  v1.9.0 'YAAC: Another Awesome CV' Class]
+\ProvidesClass{yaac-another-awesome-cv}[2018/04/22  v1.9.1 'YAAC: Another Awesome CV' Class]
 
 \LoadClass[a4paper]{article}
 
@@ -56,7 +56,7 @@
 
 % Dependences
 %A Few Useful Packages
-\RequirePackage[frenchb]{babel}
+\RequirePackage[english,french]{babel}
 \RequirePackage[utf8]{luainputenc}
 \RequirePackage{fontspec} 					                 % for loading fonts
 \RequirePackage{url,parskip} 	    % other packages for formatting
@@ -72,6 +72,7 @@
 \RequirePackage{etoolbox}
 \RequirePackage{tikz}
 \RequirePackage[skins]{tcolorbox}
+\RequirePackage{fancyhdr}
 
 
 \DeclareUnicodeCharacter{00E9}{\'{e}}
@@ -113,8 +114,15 @@
   }%
 \fi
 
+% Setup fancyhdr package
+\fancyhf{}
+\fancyhfoffset{0em}
+% Remove head rule
+\renewcommand{\headrulewidth}{0pt}
+%\fancyfoot[C]{\thepage}
+\pagestyle{fancy}
 
-\pagestyle{empty}                         % non-numbered pages
+%\pagestyle{empty}                         % non-numbered pages
 %\font\fb=''[cmr10]''                      % for use with \LaTeX command
 
 % Setup CV sections
@@ -245,6 +253,10 @@
   }
 }
 
+\newcommand\idphoto{
+  \tikz\path[fill overzoom image={\@photo}]circle[radius=0.5\linewidth];
+}
+
 % Define social entries to print in header
 \newcommand{\socialinfo}[1]{\def\@socialinfo{#1}}
 
@@ -262,7 +274,7 @@
     \end{minipage}
     \ifdef{\@photodiameter}{
       \begin{minipage}{\@photodiameter}
-        \tikz\path[fill overzoom image={\@photo}]circle[radius=0.5\linewidth];
+        \idphoto
       \end{minipage}
     }{}
     \resumetitle{\@tagline}
@@ -279,11 +291,20 @@
     \end{minipage}
     \ifdef{\@photodiameter}{
       \begin{minipage}{\@photodiameter}
-        \tikz\path[fill overzoom image={\@photo}]circle[radius=0.5\linewidth];
+        \idphoto
       \end{minipage}
     }{}
     \bigskip
   }
+}
+
+% Define a footer for CV
+% Usage: \makecvfooter{<left>}{<center>}{<right>}
+\newcommand*{\makecvfooter}[3]{%
+  \fancyfoot{}
+  \fancyfoot[L]{#1}
+  \fancyfoot[C]{#2}
+  \fancyfoot[R]{#3}
 }
 
 % Resume part title definition
