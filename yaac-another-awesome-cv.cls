@@ -131,6 +131,7 @@
 
 % Configure list
 \setlist[itemize,1]{label=\faAngleRight, nosep, leftmargin=2em} 
+\setlist[itemize,2]{label=\faAngleRight, nosep, leftmargin=1.5em} 
 
 % Setup Array : new column type
 \newcolumntype{R}[1]{>{\hfill}m{#1}}
@@ -236,6 +237,10 @@
 % Render author's email (optional)
 % Usage: \email{<email adress>}
 \newcommand*{\email}[1]{\sociallink{\mailSymbol}{mailto:#1}{#1}}
+
+% Render a website link (optional)
+% Usage: \email{<email adress>}
+\newcommand*{\website}[2]{\sociallink{\faExternalLink}{#1}{#2}}
 
 % Render author's mobile phone (optional)
 % Usage: \smartphone{<mobile phone number>}
@@ -398,6 +403,27 @@
   }
 
 \newcommand\emptySeparator{\multicolumn{2}{c}{}\\}
+
+% Define the 'experiences' environment
+\newenvironment{projects}{%
+  \begin{longtable}{l}
+}{%
+  \end{longtable}
+}
+
+\newcommand\project[5]{
+
+  \begin{minipage}[t]{\dimexpr(\linewidth) - 3em}
+    \textbf{\textsc{#1}} \thinspace \textsc{(#2)} \thinspace \hrulefill \\
+  ~#3\\
+    #4\\
+    ~\footnotesize{\foreach \n in {#5}{\cvtag{\n}}}   \\
+  \end{minipage}  
+    
+  \\*
+
+  }
+
 
 \newcommand*\twocolumnsection[2]{
   \begin{minipage}[t]{\dimexpr(\linewidth/2) - 3em}
