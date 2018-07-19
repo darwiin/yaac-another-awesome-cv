@@ -17,7 +17,7 @@
 %
 % This work consists of the files awesome-source-cv.cls 
 
-\ProvidesClass{yaac-another-awesome-cv}[2018/04/22  v1.9.1 'YAAC: Another Awesome CV' Class]
+\ProvidesClass{yaac-another-awesome-cv}[2018/07/19  v1.9.2 'YAAC: Another Awesome CV' Class]
 
 \LoadClass[a4paper]{article}
 
@@ -404,25 +404,29 @@
 
 \newcommand\emptySeparator{\multicolumn{2}{c}{}\\}
 
-% Define the 'experiences' environment
+% Define the 'projects' environment
 \newenvironment{projects}{%
   \begin{longtable}{l}
 }{%
   \end{longtable}
 }
 
+% Define the 'project' entry in the 'projects' environment
+% Usage:
+% \project
+%   {<Project name>}{<dates>}
+%   {<link1> <link2>}
+%   {<Project description>}
+%   {<techno1>,<techno2>}
 \newcommand\project[5]{
-
-  \begin{minipage}[t]{\dimexpr(\linewidth) - 3em}
-    \textbf{\textsc{#1}} \thinspace \textsc{(#2)} \thinspace \hrulefill \\
-  ~#3\\
-    #4\\
-    ~\footnotesize{\foreach \n in {#5}{\cvtag{\n}}}   \\
-  \end{minipage}  
-    
+  \begin{minipage}[t]{\dimexpr(\linewidth) - 1.5em}
+    \textbf{\textsc{#1}} \hfill \textsc{#2}\smallskip\\
+    #3\\
+    #4\smallskip\\
+    \footnotesize{\foreach \n in {#5}{\cvtag{\n}}}\\
+  \end{minipage}
   \\*
-
-  }
+}
 
 
 \newcommand*\twocolumnsection[2]{

@@ -20,9 +20,18 @@ More informations about the original Alessandro Plasmati template can be found h
    -  [ ShareLatex ](https://www.sharelatex.com/templates/cv-or-resume/professional-cv)
 
 ## Preview
+
+### Normal style
+
 | Page. 1 | Page. 2 |
 |:---:|:---:|
 | ![Résumé](example/preview/cv1.jpeg) | ![Résumé](example/preview/cv2.jpeg) |
+
+### Alternative style
+
+| Page. 1 | Page. 2 |
+|:---:|:---:|
+| ![Résumé](example/preview/cv1-alternative.jpeg) | ![Résumé](example/preview/cv2-alternative.jpeg) |
 
 ## How to use **YAAC: Another Awesome CV** latex class
 
@@ -193,15 +202,30 @@ The _languages_ section use the **skills** environment.
 The _scolarship_ section use the **scolarship** environment.
 
 ```latex
-  \begin{scholarship}
+\begin{scholarship}
 
-% Render a scholarshipentry in the scolarship environment
-% Usage: \scholarshipentry{<date>}{<description>}
-    \scholarshipentry{2007}
-          {Master STIC Professionel filière MBDS de l'Université de Nice Sophia Antipolis (Master Informatique spécialité Multimédia, Base de Données et intégration de Systèmes)}
-    \scholarshipentry{2005}
-          {Licence Sciences et Technologies, Mention Informatique, de l'Université de Nouvelle-Calédonie}
-  \end{scholarship}
+  % Render a scholarshipentry in the scolarship environment
+  % Usage: \scholarshipentry{<date>}{<description>}
+  \scholarshipentry{2007}
+    {Master STIC Professionel filière MBDS de l'Université de Nice Sophia Antipolis (Master Informatique spécialité Multimédia, Base de Données et intégration de Systèmes)}
+  \scholarshipentry{2005}
+    {Licence Sciences et Technologies, Mention Informatique, de l'Université de Nouvelle-Calédonie}
+\end{scholarship}
+```
+
+### Construct the _projects_ section
+
+The _projects_ section use the **projects** environment.
+
+```latex
+\begin{projects}
+  \project
+    {Simply City}{2017 - 2018}
+    {\website{https://www.simplycity.nc}{https://www.simplycity.nc} \website{https://innovation.engie.com/fr/news/actus/territoires/simply-city-lappli-qui-simplifie-la-ville-au-ces-2018-avec-engie/8156}{Présentation CES 2018} }
+    {Simply City est une application mobile, gratuite et participative destinée à tous les habitants, visiteurs et touristes qui séjournent dans une ville. L’application permet de connaître toutes les informations et services utiles en temps réel.}
+    {Ionic 3,Typescript,Javascript,Visual Studio Code}
+        
+\end{projects}
 ```
 
 ### Construct the _references_ section
