@@ -105,6 +105,7 @@ Put these command in the `\socialinfo` wrapper. Feel free to add `\\` when you w
   \linkedin{christopheroger}
   \viadeo{christopheroger}
   \github{darwiin}\\
+  \medium{nieldeokar}
   \smartphone{+687 123 456}
   \email{christophe.roger@mail.com}\\
   \address{2 Rue du quartier, 98765 Ville, Pays}\\
