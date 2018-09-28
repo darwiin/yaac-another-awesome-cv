@@ -173,7 +173,7 @@
 \newcommand{\viadeoSymbol}{\faViadeo}
 \newcommand{\mobileSymbol}{\faMobilePhone}
 \newcommand{\githubSymbol}{\faGithub}
-\newcommand{\mediumSymbol}{\faMedium}
+\newcommand{\bitbucketSymbol}{\faBitbucket}
 
 \newcommand\link[2]{\color{linkcolor}\href{#1}{#2}\color{Black} }
 \newcommand\important[1]{\textbf #1}
@@ -235,9 +235,9 @@
 % Usage: \github{<github-nick>}
 \newcommand*{\github}[1]{\sociallink{\githubSymbol}{https://www.github.com/#1}{github.com/#1}}           % Github icon + URL
 
-% Render author's medium (optional)
-% Usage: \medium{<medium-nick>}
-\newcommand*{\medium}[1]{\sociallink{\mediumSymbol}{https://www.medium.com/@#1}{medium.com/#1}} 
+% Render author's bitbucket (optional)
+% Usage: \bitbucket{<bitbucket-account-name>}
+\newcommand*{\bitbucket}[1]{\sociallink{\bitbucketSymbol}{https://bitbucket.com/#1}{bitbucket.com/#1}}
 
 % Render author's email (optional)
 % Usage: \email{<email adress>}
