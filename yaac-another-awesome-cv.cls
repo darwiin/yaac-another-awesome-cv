@@ -63,7 +63,7 @@
 \RequirePackage[usenames,dvipsnames]{xcolor}
 \RequirePackage{fullpage}
 \RequirePackage[margin=1.5cm]{geometry}
-\RequirePackage{fontawesome}
+\RequirePackage{fontawesome5}
 \RequirePackage{hyperref}
 \RequirePackage{titlesec}
 \RequirePackage{array}
@@ -171,7 +171,7 @@
 \newcommand{\infoSymbol}{\faInfo}
 \newcommand{\linkedinSymbol}{\faLinkedin}
 \newcommand{\viadeoSymbol}{\faViadeo}
-\newcommand{\mobileSymbol}{\faMobilePhone}
+\newcommand{\mobileSymbol}{\faMobile*}
 \newcommand{\githubSymbol}{\faGithub}
 \newcommand{\mediumSymbol}{\faMedium}
 
@@ -244,8 +244,8 @@
 \newcommand*{\email}[1]{\sociallink{\mailSymbol}{mailto:#1}{#1}}
 
 % Render a website link (optional)
-% Usage: \email{<email adress>}
-\newcommand*{\website}[2]{\sociallink{\faExternalLink}{#1}{#2}}
+% Usage: \website{<website name>}{<website adress>}
+\newcommand*{\website}[2]{\sociallink{\faExternalLink*}{#1}{#2}}
 
 % Render author's mobile phone (optional)
 % Usage: \smartphone{<mobile phone number>}
@@ -361,7 +361,7 @@
 % Render a skill in the skills environment
 % Usage: \skill{<skill>}{<level>}
 \newcommand\skill[2]{
-  \textbf{#1}    & \foreach \x in {1,...,5}{{\color{accentcolor!80} \ifnumgreater{\x}{#2}{\faCircleThin}{\faCircle}}\enspace } \\
+  \textbf{#1}    & \foreach \x in {1,...,5}{{\color{accentcolor!80} \ifnumgreater{\x}{#2}{\faCircle[regular]}{\faCircle}}\enspace } \\
 }
 
 \newcolumntype{E}{>{\raggedright\arraybackslash}p{\rightcolumnlength}}
