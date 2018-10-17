@@ -17,7 +17,7 @@
 %
 % This work consists of the files awesome-source-cv.cls 
 
-\ProvidesClass{yaac-another-awesome-cv}[2018/07/19  v1.9.2 'YAAC: Another Awesome CV' Class]
+\ProvidesClass{yaac-another-awesome-cv}[2018/10/12  v1.10.0 'YAAC: Another Awesome CV' Class]
 
 \LoadClass[a4paper]{article}
 
@@ -63,7 +63,7 @@
 \RequirePackage[usenames,dvipsnames]{xcolor}
 \RequirePackage{fullpage}
 \RequirePackage[margin=1.5cm]{geometry}
-\RequirePackage{fontawesome}
+\RequirePackage{fontawesome5}
 \RequirePackage{hyperref}
 \RequirePackage{titlesec}
 \RequirePackage{array}
@@ -73,6 +73,7 @@
 \RequirePackage{tikz}
 \RequirePackage[skins]{tcolorbox}
 \RequirePackage{fancyhdr}
+\RequirePackage{xparse}
 
 
 \DeclareUnicodeCharacter{00E9}{\'{e}}
@@ -165,14 +166,21 @@
 \newlength{\leftcolumn}
 \setlength{\leftcolumn}{2.5cm}
 
+% Font Awesome icons box
+\NewDocumentCommand\faIconBox{m s O{solid}}{
+  \makebox[1.5em][c]{\IfBooleanTF{#2}{\csname fa#1\endcsname*}{\csname fa#1\endcsname}[#3]}
+}
+
 % Font Awesome icons aliases
-\newcommand{\mailSymbol}{\faAt}
-\newcommand{\locationSymbol}{\faMapMarker}
-\newcommand{\infoSymbol}{\faInfo}
-\newcommand{\linkedinSymbol}{\faLinkedin}
-\newcommand{\viadeoSymbol}{\faViadeo}
-\newcommand{\mobileSymbol}{\faMobilePhone}
-\newcommand{\githubSymbol}{\faGithub}
+\newcommand{\mailSymbol}{\faIconBox{At}}
+\newcommand{\locationSymbol}{\faIconBox{MapMarker}*}
+\newcommand{\infoSymbol}{\faIconBox{Info}}
+\newcommand{\linkedinSymbol}{\faIconBox{LinkedinIn}}
+\newcommand{\viadeoSymbol}{\faIconBox{Viadeo}}
+\newcommand{\mobileSymbol}{\faIconBox{Mobile}*}
+\newcommand{\githubSymbol}{\faIconBox{Github}}
+\newcommand{\mediumSymbol}{\faIconBox{Medium}}
+\newcommand{\bitbucketSymbol}{\faIconBox{Bitbucket}}
 
 \newcommand\link[2]{\color{linkcolor}\href{#1}{#2}\color{Black} }
 \newcommand\important[1]{\textbf #1}
@@ -234,13 +242,21 @@
 % Usage: \github{<github-nick>}
 \newcommand*{\github}[1]{\sociallink{\githubSymbol}{https://www.github.com/#1}{github.com/#1}}           % Github icon + URL
 
+% Render author's medium (optional)
+% Usage: \medium{<medium-nick>}
+\newcommand*{\medium}[1]{\sociallink{\mediumSymbol}{https://www.medium.com/@#1}{medium.com/#1}} 
+
+% Render author's bitbucket (optional)
+% Usage: \bitbucket{<bitbucket-account-name>}
+\newcommand*{\bitbucket}[1]{\sociallink{\bitbucketSymbol}{https://bitbucket.com/#1}{bitbucket.com/#1}}
+
 % Render author's email (optional)
 % Usage: \email{<email adress>}
 \newcommand*{\email}[1]{\sociallink{\mailSymbol}{mailto:#1}{#1}}
 
 % Render a website link (optional)
-% Usage: \email{<email adress>}
-\newcommand*{\website}[2]{\sociallink{\faExternalLink}{#1}{#2}}
+% Usage: \website{<website name>}{<website adress>}
+\newcommand*{\website}[2]{\sociallink{\faLink}{#1}{#2}}
 
 % Render author's mobile phone (optional)
 % Usage: \smartphone{<mobile phone number>}
@@ -356,7 +372,7 @@
 % Render a skill in the skills environment
 % Usage: \skill{<skill>}{<level>}
 \newcommand\skill[2]{
-  \textbf{#1}    & \foreach \x in {1,...,5}{{\color{accentcolor!80} \ifnumgreater{\x}{#2}{\faCircleThin}{\faCircle}}\enspace } \\
+  \textbf{#1}    & \foreach \x in {1,...,5}{{\color{accentcolor!80} \ifnumgreater{\x}{#2}{\faCircle[regular]}{\faCircle}}\enspace } \\
 }
 
 \newcolumntype{E}{>{\raggedright\arraybackslash}p{\rightcolumnlength}}
@@ -418,12 +434,12 @@
 %   {<link1> <link2>}
 %   {<Project description>}
 %   {<techno1>,<techno2>}
-\newcommand\project[5]{
+\newcommand\project[4]{
   \begin{minipage}[t]{\dimexpr(\linewidth) - 1.5em}
     \textbf{\textsc{#1}} \hfill \textsc{#2}\smallskip\\
     #3\\
     #4\smallskip\\
-    \footnotesize{\foreach \n in {#5}{\cvtag{\n}}}\\
+    %\footnotesize{\foreach \n in {#5}{\cvtag{\n}}}\\
   \end{minipage}
   \\*
 }
