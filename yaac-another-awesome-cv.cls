@@ -73,6 +73,7 @@
 \RequirePackage{tikz}
 \RequirePackage[skins]{tcolorbox}
 \RequirePackage{fancyhdr}
+\RequirePackage{xparse}
 
 
 \DeclareUnicodeCharacter{00E9}{\'{e}}
@@ -165,16 +166,21 @@
 \newlength{\leftcolumn}
 \setlength{\leftcolumn}{2.5cm}
 
+% Font Awesome icons box
+\NewDocumentCommand\faIconBox{m s O{solid}}{
+  \makebox[1.5em][c]{\IfBooleanTF{#2}{\csname fa#1\endcsname*}{\csname fa#1\endcsname}[#3]}
+}
+
 % Font Awesome icons aliases
-\newcommand{\mailSymbol}{\faAt}
-\newcommand{\locationSymbol}{\faMapMarker*}
-\newcommand{\infoSymbol}{\faInfo}
-\newcommand{\linkedinSymbol}{\faLinkedinIn}
-\newcommand{\viadeoSymbol}{\faViadeo}
-\newcommand{\mobileSymbol}{\faMobile*}
-\newcommand{\githubSymbol}{\faGithub}
-\newcommand{\mediumSymbol}{\faMedium}
-\newcommand{\bitbucketSymbol}{\faBitbucket}
+\newcommand{\mailSymbol}{\faIconBox{At}}
+\newcommand{\locationSymbol}{\faIconBox{MapMarker}*}
+\newcommand{\infoSymbol}{\faIconBox{Info}}
+\newcommand{\linkedinSymbol}{\faIconBox{LinkedinIn}}
+\newcommand{\viadeoSymbol}{\faIconBox{Viadeo}}
+\newcommand{\mobileSymbol}{\faIconBox{Mobile}*}
+\newcommand{\githubSymbol}{\faIconBox{Github}}
+\newcommand{\mediumSymbol}{\faIconBox{Medium}}
+\newcommand{\bitbucketSymbol}{\faIconBox{Bitbucket}}
 
 \newcommand\link[2]{\color{linkcolor}\href{#1}{#2}\color{Black} }
 \newcommand\important[1]{\textbf #1}
