@@ -17,7 +17,7 @@
 %
 % This work consists of the files awesome-source-cv.cls 
 
-\ProvidesClass{yaac-another-awesome-cv}[2018/10/17  v1.10.1 'YAAC: Another Awesome CV' Class]
+\ProvidesClass{yaac-another-awesome-cv}[2018/10/12  v1.10.0 'YAAC: Another Awesome CV' Class]
 
 \LoadClass[a4paper]{article}
 
@@ -168,7 +168,7 @@
 
 % Font Awesome icons box
 \NewDocumentCommand\faIconBox{m s O{solid}}{
-  \makebox[1.2em][c]{\IfBooleanTF{#2}{\csname fa#1\endcsname*}{\csname fa#1\endcsname}[#3]}
+  \makebox[1.5em][c]{\IfBooleanTF{#2}{\csname fa#1\endcsname*}{\csname fa#1\endcsname}[#3]}
 }
 
 % Font Awesome icons aliases
@@ -181,7 +181,6 @@
 \newcommand{\githubSymbol}{\faIconBox{Github}}
 \newcommand{\mediumSymbol}{\faIconBox{Medium}}
 \newcommand{\bitbucketSymbol}{\faIconBox{Bitbucket}}
-\newcommand{\websiteSymbol}{\faIconBox{Link}}
 
 \newcommand\link[2]{\color{linkcolor}\href{#1}{#2}\color{Black} }
 \newcommand\important[1]{\textbf #1}
@@ -198,11 +197,11 @@
 
 % Render a text with its symbol
 % Usage; \socialtext{<icon>}{<label>}
-\newcommand{\socialtext}[2]{\mbox{\textcolor{symbolcolor}{#1}\hspace{0.1em}#2\hspace{1em}}}
+\newcommand{\socialtext}[2]{\mbox{\textcolor{symbolcolor}{#1}\hspace{0.5em}#2\hspace{1em}}}
 
 % Render a link with its symbol
 % Usage; \sociallink{<icon>}{<label>}
-\newcommand{\sociallink}[3]{\mbox{\textcolor{symbolcolor}{#1}\hspace{0.1em}\link{#2}{#3}\hspace{1em}}}
+\newcommand{\sociallink}[3]{\mbox{\textcolor{symbolcolor}{#1}\hspace{0.5em}\link{#2}{#3}\hspace{1em}}}
 
 % Define author's name
 % Usage: \name{<firstname>}{<lastname>}
@@ -257,7 +256,7 @@
 
 % Render a website link (optional)
 % Usage: \website{<website name>}{<website adress>}
-\newcommand*{\website}[2]{\sociallink{\websiteSymbol}{#1}{#2}}
+\newcommand*{\website}[2]{\sociallink{\faLink}{#1}{#2}}
 
 % Render author's mobile phone (optional)
 % Usage: \smartphone{<mobile phone number>}
