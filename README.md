@@ -65,7 +65,8 @@ Outside of the `\socialinfo` wrapper you have to define the mandatory parameters
 \name{Christophe}{ROGER}
 
 % Define author's photo (optional)
-% Usage \photo{<diameter>}{<photo>}
+% Usage: \photo[<shape: circular, square>]{<diameter>}{<photo>}
+% The shape of the author's photo is circular by default.
 \photo{2.5cm}{darwiin}
 
 % Define author's tagline
