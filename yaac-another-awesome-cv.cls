@@ -174,6 +174,8 @@
 \newcommand{\viadeoSymbol}{\faViadeo}
 \newcommand{\mobileSymbol}{\faMobile*}
 \newcommand{\githubSymbol}{\faGithub}
+\newcommand{\stackoverflowSymbol}{\faStackOverflow}
+\newcommand{\stackexchangeSymbol}{\faStackExchange}
 \newcommand{\mediumSymbol}{\faMedium}
 \newcommand{\bitbucketSymbol}{\faBitbucket}
 \newcommand{\websiteSymbol}{\faLink}
@@ -239,6 +241,14 @@
 % Render author's github (optional)
 % Usage: \github{<github-nick>}
 \newcommand*{\github}[1]{\sociallink{\githubSymbol}{https://www.github.com/#1}{github.com/#1}}           % Github icon + URL
+
+% Render author's stackoverflow profile (optional)
+% Usage: \stackoverflow{<stackoverflow-user-id>}
+\newcommand*{\stackoverflow}[1]{\sociallink{\stackoverflowSymbol}{https://www.stackoverflow.com/u/#1}{stackoverflow.com/u/#1}}
+
+% Render author's stackexchange profile (optional)
+% Usage: \stackexchange{<stackexchange-user-id>}
+\newcommand*{\stackexchange}[1]{\sociallink{\stackexchangeSymbol}{https://stackexchange.com/users/#1}{stackexchange.com/users/#1}}
 
 % Render author's medium (optional)
 % Usage: \medium{<medium-nick>}
