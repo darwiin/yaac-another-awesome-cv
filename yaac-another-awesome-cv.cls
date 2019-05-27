@@ -73,6 +73,7 @@
 \RequirePackage{tikz}
 \RequirePackage[skins]{tcolorbox}
 \RequirePackage{fancyhdr}
+\RequirePackage{ifthen}
 
 
 \DeclareUnicodeCharacter{00E9}{\'{e}}
@@ -215,8 +216,9 @@
 \newcommand*{\tagline}[1]{\def\@tagline{#1}}
 
 % Define author's photo
-% Usage \photo{<diameter>}{<photo>}
-\newcommand{\photo}[2]{\def\@photo{#2}\def\@photodiameter{#1}}
+% Usage: \photo[<shape: circular, square, roundedsquare, squircle>]{<diameter>}{<photo>}
+% The shape of the author's photo is circular by default.
+\newcommand{\photo}[3][circular]{\def\@photo{#3}\def\@photodiameter{#2}\def\@photoshape{#1}}
 
 % Render author's address
 % Usage: \address{<address>}
@@ -271,7 +273,24 @@
 }
 
 \newcommand\idphoto{
-  \tikz\path[fill overzoom image={\@photo}]circle[radius=0.5\linewidth];
+	\ifthenelse{\equal{\@photoshape}{square}}{
+		% Draw square photo
+		\tikz\path[fill overzoom image={\@photo}]rectangle(\linewidth,\linewidth);
+	}{
+		\ifthenelse{\equal{\@photoshape}{roundedsquare}}{
+			% Draw square photo with rounded corners
+			\tikz\path[fill overzoom image={\@photo}][rounded corners=2mm]rectangle(\linewidth,\linewidth);
+		}{
+			\ifthenelse{\equal{\@photoshape}{squircle}}{
+				% Draw squircle photo
+				\tikz\path[fill overzoom image={\@photo}][rounded corners=8mm]rectangle(\linewidth,\linewidth);
+				}{
+					% Draw circular photo
+					\tikz\path[fill overzoom image={\@photo}]circle[radius=0.5\linewidth];
+				}
+		}
+
+	}
 }
 
 % Define social entries to print in header
