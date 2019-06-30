@@ -17,9 +17,17 @@
 %
 % This work consists of the files awesome-source-cv.cls
 
-\ProvidesClass{yaac-another-awesome-cv}[2018/10/17  v1.10.2 'YAAC: Another Awesome CV' Class]
+\ProvidesClass{yaac-another-awesome-cv}[2019/06/18  v2.0.0 'YAAC: Another Awesome CV' Class]
 
-\LoadClass[a4paper]{article}
+\def\@@ptsize{10pt}
+
+\DeclareOption{10pt}{\def\@@ptsize{10pt}}
+\DeclareOption{11pt}{\def\@@ptsize{11pt}}
+\DeclareOption{12pt}{\def\@@ptsize{12pt}}
+
+\ProcessOptions\relax
+
+\LoadClass[a4paper,\@@ptsize]{article}
 
 \newif\if@showLinks   \@showLinksfalse
 
