@@ -48,9 +48,14 @@ When declaring the `\documentclass` you can use option(s) to customize your CV r
 % header layout, fonts included in the fonts directory and the default color scheme
 \documentclass[localFont]{yaac-another-awesome-cv}
 
-% Used with localFont option, the template will use the 'alternative' 
+% Used with alternative option, the template will use the 'alternative' 
 % header layout, your system fonts and the default color scheme
 \documentclass[alternative]{yaac-another-awesome-cv}
+
+% Used with localFont, alternative and 10pt options the template will use the 'alternative' 
+% header layout, fonts included in the fonts directory, the default color scheme and the '10pt' font size.
+% Based on the article document class, size options are 10pt, 11pt and 12pt
+\documentclass[localFont,alternative,10pt]{yaac-another-awesome-cv}
 
 ```
 
