@@ -17,7 +17,7 @@
 %
 % This work consists of the files awesome-source-cv.cls
 
-\ProvidesClass{yaac-another-awesome-cv}[2019/06/18  v2.0.0 'YAAC: Another Awesome CV' Class]
+\ProvidesClass{yaac-another-awesome-cv}[2019/09/10  v2.1.0 'YAAC: Another Awesome CV' Class]
 
 \def\@@ptsize{10pt}
 
@@ -30,6 +30,7 @@
 \LoadClass[a4paper,\@@ptsize]{article}
 
 \newif\if@showLinks   \@showLinksfalse
+\newif\if@isCompact   \@isCompactfalse
 
 \DeclareOption{green}{
   \def\@green{green}
@@ -59,6 +60,7 @@
 }
 
 \DeclareOption{showLinks}{ \@showLinkstrue}
+\DeclareOption{compact}{ \@isCompacttrue}
 
 \ProcessOptions
 
@@ -451,7 +453,13 @@
                  & \footnotesize{\foreach \n in {#9}{\cvtag{\n}}} 	\\
   }
 
-\newcommand\emptySeparator{\multicolumn{2}{c}{}\\}
+\if@isCompact
+  \newcommand\emptySeparator{\multicolumn{2}{c}{}\\[-0.6em]}
+\else
+  \newcommand\emptySeparator{\multicolumn{2}{c}{}\\}
+\fi
+
+
 
 % Define the 'projects' environment
 \newenvironment{projects}{%
