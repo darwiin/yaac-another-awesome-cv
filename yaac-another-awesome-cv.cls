@@ -453,6 +453,7 @@
                  & \footnotesize{\foreach \n in {#9}{\cvtag{\n}}} 	\\
   }
 
+% Define the empty separator macro with different spacing according to document class option 'compact'
 \if@isCompact
   \newcommand\emptySeparator{\multicolumn{2}{c}{}\\[-0.6em]}
 \else

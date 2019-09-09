@@ -38,6 +38,11 @@ More informations about the original Alessandro Plasmati template can be found h
 ### Use the **YAAC: Another Awesome CV** options
 
 When declaring the `\documentclass` you can use option(s) to customize your CV rendering.
+1. **localFont** to use the fonts included in the _fonts_ folder
+2. **alternative** to use the _alternative header_ layout
+3. **10pt** or **11pt** or **12pt** to change the font size
+4. **compact** to reduce vertical space between you experience entries
+
 
 ```latex
 % Used with no option, the template will use the 'traditional' 
@@ -56,6 +61,10 @@ When declaring the `\documentclass` you can use option(s) to customize your CV r
 % header layout, fonts included in the fonts directory, the default color scheme and the '10pt' font size.
 % Based on the article document class, size options are 10pt, 11pt and 12pt
 \documentclass[localFont,alternative,10pt]{yaac-another-awesome-cv}
+
+% Used with 'compact' option the template will use the compact experience layout 
+% Feel free to use this option with the others that are available
+\documentclass[compact]{yaac-another-awesome-cv}
 
 ```
 
