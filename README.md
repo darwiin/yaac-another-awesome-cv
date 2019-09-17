@@ -137,6 +137,18 @@ Use the `\makecvheader`command to generate the header.
 \makecvheader
 ```
 
+### Set the left column size
+
+Sections share the left column size (2.5cm by default). You can change this default size using the `\setleftcolumnlength` command.
+
+```latex
+% Override default left column length of (2.5cm) (optional)
+% Usage: \setleftcolumnlength{1.5cm} to change the left column lengtyh to 1.5cm
+% I recommend to use a size between 1.5cm to 2.5cm
+\setleftcolumnlength{1.5cm}
+``
+
+
 ### Construct the _comptences_ or _skills_ section
 
 To list your awesome skills as keyword lists you first have to declare the `keywords` environment and then fill it with a list of keywordsentry
