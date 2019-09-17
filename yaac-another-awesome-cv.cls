@@ -17,7 +17,7 @@
 %
 % This work consists of the files awesome-source-cv.cls
 
-\ProvidesClass{yaac-another-awesome-cv}[2019/09/10  v2.1.0 'YAAC: Another Awesome CV' Class]
+\ProvidesClass{yaac-another-awesome-cv}[2019/09/10  v2.2.0 'YAAC: Another Awesome CV' Class]
 
 \def\@@ptsize{10pt}
 
@@ -171,10 +171,14 @@
 
 %New length definition
 \newlength{\rightcolumnlength}
-\setlength{\rightcolumnlength}{14.8cm}
+\setlength{\rightcolumnlength}{15.3cm minus 1cm}
 
-\newlength{\leftcolumn}
-\setlength{\leftcolumn}{2.5cm}
+\newlength{\leftcolumnlength}
+\setlength{\leftcolumnlength}{2.5cm}
+
+% Override default left column length of (2.5cm)
+% Usage: \setleftcolumnlength{<length>}
+\newcommand{\setleftcolumnlength}[1]{\setlength{\leftcolumnlength}{#1}}
 
 % Font Awesome icons aliases
 \newcommand{\mailSymbol}{\faAt}
@@ -382,7 +386,7 @@
 }
 
 % Define a new column type for the scholarship environment
-\newcolumntype{Y}{>{\raggedleft}p{\leftcolumn}}
+\newcolumntype{Y}{>{\raggedleft}p{\leftcolumnlength}}
 
 % Define the 'scholarship' environment
 \newenvironment{scholarship}{%
@@ -399,7 +403,7 @@
 
 % Define the 'skills' environment
 \newenvironment{skills}{%
-  \begin{longtable}{R{\leftcolumn}p{\rightcolumnlength}}
+  \begin{longtable}{R{\leftcolumnlength}p{\rightcolumnlength}}
 }{%
   \end{longtable}
 }
@@ -414,7 +418,7 @@
 
 % Define the 'experiences' environment
 \newenvironment{experiences}{%
-  \begin{longtable}{R{\leftcolumn}|E}
+  \begin{longtable}{R{\leftcolumnlength}|E}
 }{%
   \end{longtable}
 }
