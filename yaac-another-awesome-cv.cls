@@ -17,7 +17,7 @@
 %
 % This work consists of the files awesome-source-cv.cls
 
-\ProvidesClass{yaac-another-awesome-cv}[2019/09/10  v2.2.0 'YAAC: Another Awesome CV' Class]
+\ProvidesClass{yaac-another-awesome-cv}[2020/03/24  v2.2.1 'YAAC: Another Awesome CV' Class]
 
 \def\@@ptsize{10pt}
 
@@ -170,15 +170,23 @@
 }
 
 %New length definition
-\newlength{\rightcolumnlength}
-\setlength{\rightcolumnlength}{15.3cm minus 1cm}
+\newlength{\fulllength}
+\setlength{\fulllength}{17.8cm}
 
 \newlength{\leftcolumnlength}
 \setlength{\leftcolumnlength}{2.5cm}
 
+\newlength{\rightcolumnlength}
+%\setlength{\rightcolumnlength}{15.3cm minus 1cm}
+%\setlength{\rightcolumnlength}{\dimexpr(\fulllength-\leftcolumnlength)\relax}
+\setlength{\rightcolumnlength}{\dimexpr(\fulllength-\leftcolumnlength)\relax}
+
 % Override default left column length of (2.5cm)
 % Usage: \setleftcolumnlength{<length>}
-\newcommand{\setleftcolumnlength}[1]{\setlength{\leftcolumnlength}{#1}}
+\newcommand{\setleftcolumnlength}[1]{
+  \setlength{\leftcolumnlength}{#1}
+  \setlength{\rightcolumnlength}{\dimexpr(\fulllength-\leftcolumnlength)\relax}
+}
 
 % Font Awesome icons aliases
 \newcommand{\mailSymbol}{\faAt}
@@ -451,7 +459,7 @@
 \newcommand\consultantexperience[9]{
   \textbf{#1}    & \textbf{#2, \textsc{#3}, #4}   								\\*
   \textbf{#5}    & \emph{#6} pour \textsc{#7}                       				\\*
-  				       & 	\begin{minipage}[t]{\rightcolumnlength}
+  				       & \begin{minipage}[t]{\rightcolumnlength}
   						        #8
                    	\end{minipage}										\\*
                  & \footnotesize{\foreach \n in {#9}{\cvtag{\n}}} 	\\
