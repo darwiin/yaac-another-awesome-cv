@@ -193,6 +193,7 @@
 \newcommand{\locationSymbol}{\faMapMarker*}
 \newcommand{\infoSymbol}{\faInfo}
 \newcommand{\linkedinSymbol}{\faLinkedinIn}
+\newcommand{\xingSymbol}{\faXing}
 \newcommand{\viadeoSymbol}{\faViadeo}
 \newcommand{\mobileSymbol}{\faMobile*}
 \newcommand{\githubSymbol}{\faGithub}
@@ -255,6 +256,10 @@
 % Render author's linked-in (optional)
 % Usage: \linkedin{<linked-in-nick>}
 \newcommand*{\linkedin}[1]{\sociallink{\linkedinSymbol}{http://www.linkedin.com/in/#1/fr}{linkedin.com/in/#1}}
+
+% Render author's Xing (optional)
+% Usage: \xing{<xing-in-nick>}
+\newcommand*{\xing}[1]{\sociallink{\xingSymbol}{http://www.xing.com/profile/#1/}{xing.com/profile/#1}}
 
 % Render author's viadeo(optional)
 % Usage: \viadeo{<viadeo-nick>}
@@ -472,7 +477,25 @@
   \newcommand\emptySeparator{\multicolumn{2}{c}{}\\}
 \fi
 
+% Define the 'publications' environment
+\newenvironment{publications}{%
+  \begin{longtable}{l}
+}{%
+  \end{longtable}
+}
 
+% Define the 'publication' entry in the 'publications' environment
+% Usage:
+% \project
+%   {Journal title}{<date>}
+%   {<link>}
+\newcommand\project[3]{
+  \begin{minipage}[t]{\dimexpr(\linewidth) - 1.5em}
+    \textbf{\textsc{#1}} \hfill \textsc{#2}\smallskip\\
+    #3\\
+  \end{minipage}
+  \\*
+}
 
 % Define the 'projects' environment
 \newenvironment{projects}{%
@@ -497,7 +520,6 @@
   \end{minipage}
   \\*
 }
-
 
 \newcommand*\twocolumnsection[2]{
   \begin{minipage}[t]{\dimexpr(\linewidth/2) - 3em}
