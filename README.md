@@ -296,6 +296,20 @@ Then you can list your references as follow:
   \begin{referees}
 ```
 
+## Build
+
+System dependencies: 
+ - Archlinux: `texlive-latexextra` and `textlive-fontextra`
+ - Ubuntu: `texlive-latex-extra` and `texlive-fonts-extra`
+ - Windows: [texlive full](https://www.tug.org/texlive/acquire-netinstall.html) (I don't use windows so I don't really know)
+
+From the `example` directory run:
+
+```bash
+xelatex cv.tex
+```
+
+There is currently a bug when building with `luatext` (see #51)
 
 ## License
 
