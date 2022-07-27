@@ -17,7 +17,7 @@
 %
 % This work consists of the files awesome-source-cv.cls
 
-\ProvidesClass{yaac-another-awesome-cv}[2020/03/24  v2.2.1 'YAAC: Another Awesome CV' Class]
+\ProvidesClass{yaac-another-awesome-cv}[2020/03/24  v2.3.1 'YAAC: Another Awesome CV' Class]
 
 \def\@@ptsize{10pt}
 
@@ -539,3 +539,29 @@
   \end{minipage}%
 }
 
+% Define the 'publications' environment
+\newenvironment{publications}{%
+\vspace{5pt}
+}
+
+%% Bibliography
+\usepackage[backend=bibtex,style=authoryear,natbib=true]{biblatex} 
+
+\newcounter{bibitem}
+\AtBeginBibliography{\setcounter{bibitem}{1}}
+\AtEveryBibitem{\hspace{1em}\makebox[1.5em][l]{{\thebibitem}\stepcounter{bibitem}.}}
+
+\setlength{\bibitemsep}{1.5ex}
+\setlength{\bibhang}{2.7em}
+\NewBibliographyString{retrieved}
+\NewBibliographyString{from}
+
+\urlstyle{tt}
+
+\def\@subbibfont{\large\color{accentcolor}}
+\newcommand\subbibfont[1]{\gdef\@subbibfont{#1}}
+\defbibheading{subbibliography}{\vskip 5pt {\@subbibfont\hspace{0pt}#1}\par}
+
+\defbibfilter{booksandchapters}{%
+( type=book or type=incollection )
+}
