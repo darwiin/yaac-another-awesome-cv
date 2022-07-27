@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: ubuntu:disco
+      - image: ubuntu:jammy
     steps:
       - run:
           name: Git installation
