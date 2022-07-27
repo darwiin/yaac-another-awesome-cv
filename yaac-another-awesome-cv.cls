@@ -17,11 +17,20 @@
 %
 % This work consists of the files awesome-source-cv.cls
 
-\ProvidesClass{yaac-another-awesome-cv}[2018/10/17  v1.10.2 'YAAC: Another Awesome CV' Class]
+\ProvidesClass{yaac-another-awesome-cv}[2020/03/24  v2.2.1 'YAAC: Another Awesome CV' Class]
 
-\LoadClass[a4paper]{article}
+\def\@@ptsize{10pt}
+
+\DeclareOption{10pt}{\def\@@ptsize{10pt}}
+\DeclareOption{11pt}{\def\@@ptsize{11pt}}
+\DeclareOption{12pt}{\def\@@ptsize{12pt}}
+
+\ProcessOptions\relax
+
+\LoadClass[a4paper,\@@ptsize]{article}
 
 \newif\if@showLinks   \@showLinksfalse
+\newif\if@isCompact   \@isCompactfalse
 
 \DeclareOption{green}{
   \def\@green{green}
@@ -51,6 +60,7 @@
 }
 
 \DeclareOption{showLinks}{ \@showLinkstrue}
+\DeclareOption{compact}{ \@isCompacttrue}
 
 \ProcessOptions
 
@@ -73,6 +83,7 @@
 \RequirePackage{tikz}
 \RequirePackage[skins]{tcolorbox}
 \RequirePackage{fancyhdr}
+\RequirePackage{ifthen}
 
 
 \DeclareUnicodeCharacter{00E9}{\'{e}}
@@ -159,11 +170,23 @@
 }
 
 %New length definition
-\newlength{\rightcolumnlength}
-\setlength{\rightcolumnlength}{14.8cm}
+\newlength{\fulllength}
+\setlength{\fulllength}{17.8cm}
 
-\newlength{\leftcolumn}
-\setlength{\leftcolumn}{2.5cm}
+\newlength{\leftcolumnlength}
+\setlength{\leftcolumnlength}{2.5cm}
+
+\newlength{\rightcolumnlength}
+%\setlength{\rightcolumnlength}{15.3cm minus 1cm}
+%\setlength{\rightcolumnlength}{\dimexpr(\fulllength-\leftcolumnlength)\relax}
+\setlength{\rightcolumnlength}{\dimexpr(\fulllength-\leftcolumnlength)\relax}
+
+% Override default left column length of (2.5cm)
+% Usage: \setleftcolumnlength{<length>}
+\newcommand{\setleftcolumnlength}[1]{
+  \setlength{\leftcolumnlength}{#1}
+  \setlength{\rightcolumnlength}{\dimexpr(\fulllength-\leftcolumnlength)\relax}
+}
 
 % Font Awesome icons aliases
 \newcommand{\mailSymbol}{\faAt}
@@ -173,6 +196,8 @@
 \newcommand{\viadeoSymbol}{\faViadeo}
 \newcommand{\mobileSymbol}{\faMobile*}
 \newcommand{\githubSymbol}{\faGithub}
+\newcommand{\stackoverflowSymbol}{\faStackOverflow}
+\newcommand{\stackexchangeSymbol}{\faStackExchange}
 \newcommand{\mediumSymbol}{\faMedium}
 \newcommand{\bitbucketSymbol}{\faBitbucket}
 \newcommand{\websiteSymbol}{\faLink}
@@ -215,8 +240,9 @@
 \newcommand*{\tagline}[1]{\def\@tagline{#1}}
 
 % Define author's photo
-% Usage \photo{<diameter>}{<photo>}
-\newcommand{\photo}[2]{\def\@photo{#2}\def\@photodiameter{#1}}
+% Usage: \photo[<shape: circular, square, roundedsquare, squircle>]{<diameter>}{<photo>}
+% The shape of the author's photo is circular by default.
+\newcommand{\photo}[3][circular]{\def\@photo{#3}\def\@photodiameter{#2}\def\@photoshape{#1}}
 
 % Render author's address
 % Usage: \address{<address>}
@@ -237,6 +263,14 @@
 % Render author's github (optional)
 % Usage: \github{<github-nick>}
 \newcommand*{\github}[1]{\sociallink{\githubSymbol}{https://www.github.com/#1}{github.com/#1}}           % Github icon + URL
+
+% Render author's stackoverflow profile (optional)
+% Usage: \stackoverflow{<stackoverflow-user-id>}
+\newcommand*{\stackoverflow}[1]{\sociallink{\stackoverflowSymbol}{https://www.stackoverflow.com/u/#1}{stackoverflow.com/u/#1}}
+
+% Render author's stackexchange profile (optional)
+% Usage: \stackexchange{<stackexchange-user-id>}
+\newcommand*{\stackexchange}[1]{\sociallink{\stackexchangeSymbol}{https://stackexchange.com/users/#1}{stackexchange.com/users/#1}}
 
 % Render author's medium (optional)
 % Usage: \medium{<medium-nick>}
@@ -271,7 +305,24 @@
 }
 
 \newcommand\idphoto{
-  \tikz\path[fill overzoom image={\@photo}]circle[radius=0.5\linewidth];
+	\ifthenelse{\equal{\@photoshape}{square}}{
+		% Draw square photo
+		\tikz\path[fill overzoom image={\@photo}]rectangle(\linewidth,\linewidth);
+	}{
+		\ifthenelse{\equal{\@photoshape}{roundedsquare}}{
+			% Draw square photo with rounded corners
+			\tikz\path[fill overzoom image={\@photo}][rounded corners=2mm]rectangle(\linewidth,\linewidth);
+		}{
+			\ifthenelse{\equal{\@photoshape}{squircle}}{
+				% Draw squircle photo
+				\tikz\path[fill overzoom image={\@photo}][rounded corners=8mm]rectangle(\linewidth,\linewidth);
+				}{
+					% Draw circular photo
+					\tikz\path[fill overzoom image={\@photo}]circle[radius=0.5\linewidth];
+				}
+		}
+
+	}
 }
 
 % Define social entries to print in header
@@ -343,7 +394,7 @@
 }
 
 % Define a new column type for the scholarship environment
-\newcolumntype{Y}{>{\raggedleft}p{\leftcolumn}}
+\newcolumntype{Y}{>{\raggedleft}p{\leftcolumnlength}}
 
 % Define the 'scholarship' environment
 \newenvironment{scholarship}{%
@@ -360,7 +411,7 @@
 
 % Define the 'skills' environment
 \newenvironment{skills}{%
-  \begin{longtable}{R{\leftcolumn}p{\rightcolumnlength}}
+  \begin{longtable}{R{\leftcolumnlength}p{\rightcolumnlength}}
 }{%
   \end{longtable}
 }
@@ -375,7 +426,7 @@
 
 % Define the 'experiences' environment
 \newenvironment{experiences}{%
-  \begin{longtable}{R{\leftcolumn}|E}
+  \begin{longtable}{R{\leftcolumnlength}|E}
 }{%
   \end{longtable}
 }
@@ -408,13 +459,20 @@
 \newcommand\consultantexperience[9]{
   \textbf{#1}    & \textbf{#2, \textsc{#3}, #4}   								\\*
   \textbf{#5}    & \emph{#6} pour \textsc{#7}                       				\\*
-  				       & 	\begin{minipage}[t]{\rightcolumnlength}
+  				       & \begin{minipage}[t]{\rightcolumnlength}
   						        #8
                    	\end{minipage}										\\*
                  & \footnotesize{\foreach \n in {#9}{\cvtag{\n}}} 	\\
   }
 
-\newcommand\emptySeparator{\multicolumn{2}{c}{}\\}
+% Define the empty separator macro with different spacing according to document class option 'compact'
+\if@isCompact
+  \newcommand\emptySeparator{\multicolumn{2}{c}{}\\[-0.6em]}
+\else
+  \newcommand\emptySeparator{\multicolumn{2}{c}{}\\}
+\fi
+
+
 
 % Define the 'projects' environment
 \newenvironment{projects}{%

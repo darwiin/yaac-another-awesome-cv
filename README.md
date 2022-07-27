@@ -38,6 +38,11 @@ More informations about the original Alessandro Plasmati template can be found h
 ### Use the **YAAC: Another Awesome CV** options
 
 When declaring the `\documentclass` you can use option(s) to customize your CV rendering.
+1. **localFont** to use the fonts included in the _fonts_ folder
+2. **alternative** to use the _alternative header_ layout
+3. **10pt** or **11pt** or **12pt** to change the font size
+4. **compact** to reduce vertical space between you experience entries
+
 
 ```latex
 % Used with no option, the template will use the 'traditional' 
@@ -48,9 +53,18 @@ When declaring the `\documentclass` you can use option(s) to customize your CV r
 % header layout, fonts included in the fonts directory and the default color scheme
 \documentclass[localFont]{yaac-another-awesome-cv}
 
-% Used with localFont option, the template will use the 'alternative' 
+% Used with alternative option, the template will use the 'alternative' 
 % header layout, your system fonts and the default color scheme
 \documentclass[alternative]{yaac-another-awesome-cv}
+
+% Used with localFont, alternative and 10pt options the template will use the 'alternative' 
+% header layout, fonts included in the fonts directory, the default color scheme and the '10pt' font size.
+% Based on the article document class, size options are 10pt, 11pt and 12pt
+\documentclass[localFont,alternative,10pt]{yaac-another-awesome-cv}
+
+% Used with 'compact' option the template will use the compact experience layout 
+% Feel free to use this option with the others that are available
+\documentclass[compact]{yaac-another-awesome-cv}
 
 ```
 
@@ -65,7 +79,8 @@ Outside of the `\socialinfo` wrapper you have to define the mandatory parameters
 \name{Christophe}{ROGER}
 
 % Define author's photo (optional)
-% Usage \photo{<diameter>}{<photo>}
+% Usage: \photo[<shape: circular, square, roundedsquare, squircle>]{<diameter>}{<photo>}
+% The shape of the author's photo is circular by default.
 \photo{2.5cm}{darwiin}
 
 % Define author's tagline
@@ -88,6 +103,14 @@ Most social network have their command to render a clickable link or a simple te
 % Render author's github (optional)
 % Usage: \github{<github-nick>}
 \github{darwiin}
+
+% Render author's stackoverflow profile (optional)
+% Usage: \stackoverflow{<stackoverflow-user-id>}
+\stackoverflow{759643}
+
+% Render author's stackexchange profile (optional)
+% Usage: \stackexchange{<stackexchange-user-id>}
+\stackexchange{396216}
 
 % Render author's email (optional)
 % Usage: \email{<email adress>}
@@ -113,6 +136,18 @@ Use the `\makecvheader`command to generate the header.
 ```latex
 \makecvheader
 ```
+
+### Set the left column size
+
+Sections share the left column size (2.5cm by default). You can change this default size using the `\setleftcolumnlength` command.
+
+```latex
+% Override default left column length of (2.5cm) (optional)
+% Usage: \setleftcolumnlength{1.5cm} to change the left column lengtyh to 1.5cm
+% I recommend to use a size between 1.5cm to 2.5cm
+\setleftcolumnlength{1.5cm}
+```
+
 
 ### Construct the _comptences_ or _skills_ section
 
