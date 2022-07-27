@@ -146,7 +146,7 @@ Sections share the left column size (2.5cm by default). You can change this defa
 % Usage: \setleftcolumnlength{1.5cm} to change the left column lengtyh to 1.5cm
 % I recommend to use a size between 1.5cm to 2.5cm
 \setleftcolumnlength{1.5cm}
-``
+```
 
 
 ### Construct the _comptences_ or _skills_ section
