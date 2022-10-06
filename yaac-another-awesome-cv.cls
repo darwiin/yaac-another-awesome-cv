@@ -200,6 +200,7 @@
 \newcommand{\stackexchangeSymbol}{\faStackExchange}
 \newcommand{\mediumSymbol}{\faMedium}
 \newcommand{\bitbucketSymbol}{\faBitbucket}
+\newcommand{\twitterSymbol}{\faTwitter}
 \newcommand{\websiteSymbol}{\faLink}
 
 
@@ -279,6 +280,10 @@
 % Render author's bitbucket (optional)
 % Usage: \bitbucket{<bitbucket-account-name>}
 \newcommand*{\bitbucket}[1]{\sociallink{\bitbucketSymbol}{https://bitbucket.com/#1}{bitbucket.com/#1}}
+
+% Render author's twitter profile (optional)
+% Usage: \twitter{<twitter-user-name>}
+\newcommand*{\twitter}[1]{\sociallink{\twitterSymbol}{https://twitter.com/#1}{twitter.com/#1}}
 
 % Render author's email (optional)
 % Usage: \email{<email adress>}

@@ -112,6 +112,10 @@ Most social network have their command to render a clickable link or a simple te
 % Usage: \stackexchange{<stackexchange-user-id>}
 \stackexchange{396216}
 
+% Render author's twitter profile (optional)
+% Usage: \twitter{<twitter-user-name>}
+\twitter{EFF}
+
 % Render author's email (optional)
 % Usage: \email{<email adress>}
 \email{christophe.roger@mail.com}
