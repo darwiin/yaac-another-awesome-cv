@@ -7,7 +7,7 @@
 % conditions of the LaTeX Project Public License, either version 1.3c
 % of this license or (at your option) any later version.
 % The latest version of this license is in
-%   http://www.latex-project.org/lppl.txt
+%   https://www.latex-project.org/lppl.txt
 % and version 1.3 or later is part of all distributions of LaTeX
 % version 2005/12/01 or later.
 %
@@ -17,7 +17,7 @@
 %
 % This work consists of the files awesome-source-cv.cls
 
-\ProvidesClass{yaac-another-awesome-cv}[2020/03/24  v2.2.1 'YAAC: Another Awesome CV' Class]
+\ProvidesClass{yaac-another-awesome-cv}[2020/03/24  v2.3.1 'YAAC: Another Awesome CV' Class]
 
 \def\@@ptsize{10pt}
 
@@ -252,11 +252,11 @@
 
 % Render author's linked-in (optional)
 % Usage: \linkedin{<linked-in-nick>}
-\newcommand*{\linkedin}[1]{\sociallink{\linkedinSymbol}{http://www.linkedin.com/in/#1/fr}{linkedin.com/in/#1}}
+\newcommand*{\linkedin}[1]{\sociallink{\linkedinSymbol}{https://www.linkedin.com/in/#1/fr}{linkedin.com/in/#1}}
 
 % Render author's viadeo(optional)
 % Usage: \viadeo{<viadeo-nick>}
-\newcommand*{\viadeo}[1]{\sociallink{\viadeoSymbol}{http://www.viadeo.com/fr/profile/#1}{viadeo.com/fr/profile/#1}}
+\newcommand*{\viadeo}[1]{\sociallink{\viadeoSymbol}{https://www.viadeo.com/fr/profile/#1}{viadeo.com/fr/profile/#1}}
 
 % Render author's github (optional)
 % Usage: \github{<github-nick>}
@@ -537,3 +537,29 @@
   \end{minipage}%
 }
 
+% Define the 'publications' environment
+\newenvironment{publications}{%
+\vspace{5pt}
+}
+
+%% Bibliography
+\usepackage[backend=bibtex,style=authoryear,natbib=true]{biblatex} 
+
+\newcounter{bibitem}
+\AtBeginBibliography{\setcounter{bibitem}{1}}
+\AtEveryBibitem{\hspace{1em}\makebox[1.5em][l]{{\thebibitem}\stepcounter{bibitem}.}}
+
+\setlength{\bibitemsep}{1.5ex}
+\setlength{\bibhang}{2.7em}
+\NewBibliographyString{retrieved}
+\NewBibliographyString{from}
+
+\urlstyle{tt}
+
+\def\@subbibfont{\large\color{accentcolor}}
+\newcommand\subbibfont[1]{\gdef\@subbibfont{#1}}
+\defbibheading{subbibliography}{\vskip 5pt {\@subbibfont\hspace{0pt}#1}\par}
+
+\defbibfilter{booksandchapters}{%
+( type=book or type=incollection )
+}

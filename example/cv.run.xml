@@ -44,17 +44,21 @@
   <internal package="biblatex" priority="9" active="0">
     <generic>latex</generic>
     <provides type="dynamic">
-      <file>cv.bcf</file>
+      <file>cv.aux</file>
+      <file>cv-blx.bib</file>
     </provides>
     <requires type="dynamic">
       <file>cv.bbl</file>
     </requires>
     <requires type="static">
       <file>blx-dm.def</file>
+      <file>blx-unicode.def</file>
       <file>blx-compat.def</file>
+      <file>blx-bibtex.def</file>
       <file>biblatex.def</file>
-      <file>authoryear.bbx</file>
+      <file>blx-natbib.def</file>
       <file>standard.bbx</file>
+      <file>authoryear.bbx</file>
       <file>authoryear.cbx</file>
       <file>biblatex.cfg</file>
       <file>french.lbx</file>
@@ -62,13 +66,14 @@
     </requires>
   </internal>
   <external package="biblatex" priority="5" active="0">
-    <generic>biber</generic>
+    <generic>bibtex</generic>
     <cmdline>
-      <binary>biber</binary>
+      <binary>bibtex</binary>
+      <option>-min-crossrefs 2</option>
       <infile>cv</infile>
     </cmdline>
     <input>
-      <file>cv.bcf</file>
+      <file>cv.aux</file>
     </input>
     <output>
       <file>cv.bbl</file>
@@ -77,10 +82,14 @@
       <file>cv.bbl</file>
     </provides>
     <requires type="dynamic">
-      <file>cv.bcf</file>
+      <file>cv.aux</file>
+      <file>cv-blx.bib</file>
     </requires>
     <requires type="editable">
-      <file>sample.bib</file>
+      <file>my_publications.bib</file>
+    </requires>
+    <requires type="static">
+      <file>biblatex.bst</file>
     </requires>
   </external>
 </requests>

@@ -297,6 +297,29 @@ Then you can list your references as follow:
 ```
 
 
+### Construct the _publications_ section
+
+The _publications_ section use the **publications** environment.
+
+```latex
+  \begin{publications}
+
+    % Here's go your references
+
+  \end{publications}
+```
+
+Then you can list your references as follow:
+
+```latex
+  % Splits the bibliography per citation type (here Journal Aricles)
+  \printbibliography[heading=subbibliography,title={Journal Articles},type=article]
+
+  % Or for the full list without separating by type
+  \printbibliography[heading={none}]
+```
+
+
 ## License
 
 Latex class file _yaac-another-awesome-cv_ is published under the term of the [LPPL Version 1.3c](https://www.latex-project.org/lppl.txt).
